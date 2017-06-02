@@ -17,3 +17,5 @@ Plugin For Mac WeChat.
 ## 待实现
 * 浏览主页
 * 查看动态详情
+
+### 欢迎关注[我的博客](https://whenbar.com)  http://www.jianshu.com/u/cc52a4f9fcc5 
