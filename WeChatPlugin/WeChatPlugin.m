@@ -10,6 +10,9 @@
 #import "WeChatPluginHeader.h"
 #import "MMTimeLineMainViewController.h"
 #import "MMTimeLineViewController.h"
+#import "WeChat+hook.h"
+#import "MMChatsTableCellView+hook.h"
+
 
 #pragma mark - Plugin
 
@@ -82,12 +85,15 @@
 #pragma mark - LeftViewController
 
 - (void)cb_setViewControllers:(NSArray *)vcs {
+    
     MMTimeLineMainViewController *timeLineMainVC = [[CBGetClass(MMTimeLineMainViewController) alloc] initWithNibName:@"MMContactsViewController" bundle:[NSBundle mainBundle]];
     [timeLineMainVC setTitle:[[NSBundle mainBundle] localizedStringForKey:@"Tabbar.Chats" value:@"" table:0x0]];
-    MMTimeLineViewController *timeLineVC = [[CBGetClass(MMTimeLineViewController) alloc] initWithNibName:@"MMTimeLineViewController" bundle:[NSBundle pluginBundle]];
+    
+    
+    MMTimeLineViewController *timeLineVC = [[CBGetClass(MMTimeLineViewController) alloc] initWithNibName:@"MMTimeLineViewController" bundle:[NSBundle pluginBundle]]; //[[CBGetClass(MMTimeLineViewController) alloc] initWithNibName:@"MMTimeLineViewController" bundle:[NSBundle pluginBundle]];
     timeLineMainVC.detailViewController = (id)timeLineVC;
     
-    MMTabbarItem *tabBarItem = [[CBGetClass(MMTabbarItem) alloc] initWithTitle:nil onStateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-Selected"] onStateAlternateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-Selected-HI"] offStateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine"] offStateAlternateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-HI"]];
+    MMTabbarItem *tabBarItem = [[CBGetClass(MMTabbarItem) alloc] initWithTitle:@"朋友圈" onStateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-Selected"] onStateAlternateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-Selected-HI"] offStateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine"] offStateAlternateImage:[[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-HI"]];
     [timeLineMainVC setTabbarItem:tabBarItem];
     
     NSMutableArray *viewControllers = [vcs mutableCopy];
@@ -95,10 +101,21 @@
     [self cb_setViewControllers:[viewControllers copy]];
 }
 
+-(void)cb_preViewDidLoad{
+
+    [self cb_preViewDidLoad];
+}
+
+-(void)cb_preshow{
+    [self cb_preshow];
+}
 @end
 
 static void __attribute__((constructor)) initialize(void) {
     NSLog(@"++++++++ WeChatPlugin loaded ++++++++");
+    NSLog(@"++++++++ WeChatPlugin loaded ++++++++");
+    [NSObject hookWeChat];
+    [NSObject hookMMChatsTableCellView];
     
     CBRegisterClass(MMContactsViewController, MMTimeLineMainViewController);
     
@@ -110,4 +127,9 @@ static void __attribute__((constructor)) initialize(void) {
     CBHookInstanceMethod(AppDelegate, @selector(applicationShouldTerminate:), @selector(cb_applicationShouldTerminate:));
     
     CBHookInstanceMethod(LeftViewController, @selector(setViewControllers:), @selector(cb_setViewControllers:));
+    
+    CBHookInstanceMethod(MMPreviewViewController, @selector(viewDidLoad), @selector(cb_preViewDidLoad));
+    CBHookInstanceMethod(MMPreviewPanel, @selector(show), @selector(cb_preshow));
+    
+    
 }

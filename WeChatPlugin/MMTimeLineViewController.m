@@ -44,6 +44,9 @@
     [self.timeLineMgr updateTimeLineHead];
 }
 
+-(void)setupContactDetail:(id)sender{
+    NSLog(@"%s",__func__);
+}
 #pragma mark -
 
 - (void)scrollViewDidScroll:(NSNotification *)notification {
@@ -71,6 +74,7 @@
 #pragma mark - NSTableViewDelegate
 
 - (nullable MMStatusMediaView *)tableView:(NSTableView *)tableView mediaViewForCell:(MMStatusCell *)cell status:(MMStatus *)status {
+    
     MMStatusMediaView *mediaView;
     switch (status.mediaType) {
         case MMStatusMediaObjectTypeImage: {
@@ -85,9 +89,11 @@
             break;
     }
     return mediaView;
+    
 }
 
 - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row {
+    
     MMStatus *status = [self.timeLineMgr getTimeLineStatusAtIndex:row];
     MMStatusCell *cell = [tableView makeViewWithIdentifier:@"statusCell" owner:tableView];
     MMStatusMediaView *mediaView = [self tableView:tableView mediaViewForCell:cell status:status];
@@ -95,6 +101,7 @@
     [cell updateViewWithStatus:status];
     cell.delegate = self;
     return cell;
+    
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
@@ -105,7 +112,9 @@
 #pragma mark - MMStatusCellDelegate
 
 - (void)cell:(MMStatusCell *)cell didClickMediaLink:(NSString *)url {
+    
     [[CBGetClass(MMURLHandler) defaultHandler] handleURL:url];
+    
 }
 
 #pragma mark - MMTimeLineMgrDelegate

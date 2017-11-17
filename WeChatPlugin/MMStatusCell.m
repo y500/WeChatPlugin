@@ -107,8 +107,28 @@
                         [self.delegate cell:self didClickMediaLink:[(MMStatusLinkMediaObject *)self.status.mediaObject linkURLString]];
                     }
                 }
-            }
                 break;
+            }
+            case MMStatusMediaObjectTypeImage:{
+                
+                __block NSInteger selectindex = -1;
+                [self.mediaRealView.subviews enumerateObjectsUsingBlock:^(__kindof NSView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    BOOL isClickLinkView = [self mouse:point inRect:obj.frame];
+                    if (isClickLinkView) {
+                        selectindex = idx;
+                    }
+                }];
+//                BOOL isClickLinkView = [self mouse:point inRect:self.mediaRealView.frame];
+                if (selectindex >= 0) {
+                    MMStatusImageMediaObject * media = (MMStatusImageMediaObject *)self.status.mediaObject;
+                    NSArray * images =  media.imageURLStrings;
+                    if (images.count > selectindex && [self.delegate respondsToSelector:@selector(cell:didClickMediaLink:)]) {
+                        [self.delegate cell:self didClickMediaLink:images[selectindex]];
+                    }
+                }
+
+                break;
+            }
             default:
                 break;
         }

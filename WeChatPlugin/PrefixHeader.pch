@@ -17,6 +17,10 @@
 #import "MMStatusMediaObject.h"
 #import "MMStatusImageMediaObject.h"
 #import "MMStatusLinkMediaObject.h"
+#import "Color.h"
+#import "NSButton+Action.h"
+#import "NSView+Action.h"
+#import "NSTextField+Action.h"
 
 #define WeChatService(classname) (classname *)[[CBGetClass(MMServiceCenter) defaultCenter] getService:CBGetClass(classname)]
 
