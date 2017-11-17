@@ -1,12 +1,14 @@
-# WeChatPlugin
+# WeChatPlugin - 浏览朋友圈&消息防撤回&多开微信&自动回复
+
 Plugin For Mac WeChat.
  
 
 ![](http://ofg6kncyv.bkt.clouddn.com/WeChat_logo_icon.png)
 
 ## 说明
-*  直接运行demo
-*  
+*  直接运行 WeChatPlugin.xcworkspace
+
+
 ## 功能
 * 浏览朋友圈
 * 自动登录
