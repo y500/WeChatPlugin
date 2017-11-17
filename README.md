@@ -13,7 +13,7 @@ Plugin For Mac WeChat.
 * 浏览朋友圈
 * 自动登录
 
-
+![朋友圈](./snap/wechattimeline@2x.png)
 
 
 ## 新增功能WeChatPlugin- 小助手功能
