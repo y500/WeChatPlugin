@@ -121,7 +121,7 @@ Plugin For Mac WeChat.
  
 ![](https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzA3ODQyNDM0Mg==&mid=2650847033&idx=1&sn=f2bee1644c748973b9e632758939c9f9)
 
-关于关注微信公众号👆
+欢迎关注微信公众号👆
  
 
 
