@@ -27,6 +27,7 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.view.wantsLayer = true;
     self.view.layer.backgroundColor = [NSColor colorWithRed:0.9843 green:0.9843 blue:0.9843 alpha:1.0].CGColor;
@@ -37,6 +38,7 @@
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
     NSScrollView *scrollView = [self.tableView enclosingScrollView];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(scrollViewDidScroll:) name:NSViewBoundsDidChangeNotification object:scrollView.contentView];
+    
 }
 
 - (void)viewWillAppear {

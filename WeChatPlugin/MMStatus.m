@@ -78,7 +78,12 @@
         self.mediaObject = mediaObject;
     }
 }
-
+-(void)valiateData{
+    _sourceString = _sourceString?_sourceString:@"";
+    _profileImageURLString = _profileImageURLString?_profileImageURLString:@"";
+    _nameString = _nameString?_nameString:@"";
+    
+}
 - (BOOL)hasSource {
     return self.sourceString.length;
 }

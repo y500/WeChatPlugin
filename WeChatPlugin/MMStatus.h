@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, MMStatusMediaObjectType) {
 
 - (void)updateWithSnsObject:(SnsObject *)snsObject;
 
+-(void)valiateData;
+
 - (BOOL)hasSource;
 - (BOOL)hasContent;
 - (BOOL)hasMediaObject;

@@ -20,7 +20,7 @@
 @property(retain, nonatomic) MMNoBlurImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) MMPreviewViewPageInfo *pageInfo; // @synthesize pageInfo=_pageInfo;
-- (void).cxx_destruct;
+//- (void).cxx_destruct;
 - (void)standardSize;
 - (void)zoomOut;
 - (void)zoomIn;

@@ -101,6 +101,9 @@
     [self cb_setViewControllers:[viewControllers copy]];
 }
 
+-(void)cb_mmDidLoad{
+    NSLog(@"\n----\n ❤️ %@ didLoad \n----\n",NSStringFromClass([self class]));
+}
 -(void)cb_preViewDidLoad{
 
     [self cb_preViewDidLoad];
@@ -127,6 +130,9 @@ static void __attribute__((constructor)) initialize(void) {
     CBHookInstanceMethod(AppDelegate, @selector(applicationShouldTerminate:), @selector(cb_applicationShouldTerminate:));
     
     CBHookInstanceMethod(LeftViewController, @selector(setViewControllers:), @selector(cb_setViewControllers:));
+    
+    
+    CBHookInstanceMethod(MMViewController, @selector(viewDidLoad), @selector(cb_mmDidLoad));
     
     CBHookInstanceMethod(MMPreviewViewController, @selector(viewDidLoad), @selector(cb_preViewDidLoad));
     CBHookInstanceMethod(MMPreviewPanel, @selector(show), @selector(cb_preshow));

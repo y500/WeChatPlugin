@@ -45,12 +45,13 @@
         return;
     }
     _status = status;
+    [_status valiateData];
     self.profileImageView.image = [WeChatService(MMAvatarService) defaultAvatarImage];
     MMAvatarService *service = [[CBGetClass(MMServiceCenter) defaultCenter] getService:CBGetClass(MMAvatarService)];
     [service getAvatarImageWithUrl:status.profileImageURLString completion:^(NSImage *image) {
         self.profileImageView.image = image;
     }];
-    self.nameTextField.stringValue = status.nameString;
+    self.nameTextField.stringValue = status.nameString?status.nameString:@"";
     self.tagTextField.stringValue = [NSString stringWithFormat:@"%@%@", status.timeString, [status hasSource] ? [NSString stringWithFormat:@" - %@", status.sourceString] : @""];
     self.toContentTextFieldLayoutConstraint.active = [status hasContent];
     self.toTagTextFieldLayoutConstraint.active = ![status hasContent];
