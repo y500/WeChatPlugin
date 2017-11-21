@@ -189,8 +189,8 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     NSDictionary *msgDict = [XMLReader dictionaryForXMLString:msgContent error:&error];
     
     if (!error && msgDict && msgDict[@"sysmsg"] && msgDict[@"sysmsg"][@"revokemsg"]) {
-        NSString *newmsgid = msgDict[@"sysmsg"][@"revokemsg"][@"newmsgid"][@"text"];
-        NSString *session =  msgDict[@"sysmsg"][@"revokemsg"][@"session"][@"text"];
+        NSString *newmsgid = msgDict[@"sysmsg"][@"revokemsg"][@"newmsgid"];//[@"text"];
+        NSString *session =  msgDict[@"sysmsg"][@"revokemsg"][@"session"];//[@"text"];
         
         //      获取原始的撤回提示消息
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
