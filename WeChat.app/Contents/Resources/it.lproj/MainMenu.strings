@@ -1,228 +1,228 @@
 
 /* Class = "NSMenuItem"; title = "Contacts"; ObjectID = "0dQ-P0-YQZ"; */
-"0dQ-P0-YQZ.title" = "Contacts";
+"0dQ-P0-YQZ.title" = "Contatti";
 
 /* Class = "NSMenuItem"; title = "WeChat"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "WeChat";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
-"2oI-Rn-ZJC.title" = "Transformations";
+"2oI-Rn-ZJC.title" = "Trasformazioni";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "3IN-sU-3Bg"; */
-"3IN-sU-3Bg.title" = "Spelling";
+"3IN-sU-3Bg.title" = "Ortografia";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "3rS-ZA-NoH"; */
-"3rS-ZA-NoH.title" = "Speech";
+"3rS-ZA-NoH.title" = "Parlato";
 
 /* Class = "NSMenuItem"; title = "Quit WeChat"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit WeChat";
+"4sb-4s-VLi.title" = "Chiudi WeChat";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
-"5QF-Oa-p0T.title" = "Edit";
+"5QF-Oa-p0T.title" = "Modifica";
 
 /* Class = "NSMenuItem"; title = "About WeChat"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About WeChat";
+"5kV-Vb-QxS.title" = "Informazioni su WeChat";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
-"6dh-zS-Vam.title" = "Redo";
+"6dh-zS-Vam.title" = "Ripeti";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
-"78Y-hA-62v.title" = "Correct Spelling Automatically";
+"78Y-hA-62v.title" = "Correggi automaticamente ortografia";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
-"9ic-FL-obx.title" = "Substitutions";
+"9ic-FL-obx.title" = "Sostituzioni";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "9yt-4B-nSM"; */
-"9yt-4B-nSM.title" = "Smart Copy/Paste";
+"9yt-4B-nSM.title" = "Copia/incolla avanzato";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+"AYu-sK-qS6.title" = "Menu principale";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Preferences…";
+"BOF-NM-1cW.title" = "Preferenze...";
 
 // Lock
-"sIG-Zq-y0j.title" = "Lock";
+"sIG-Zq-y0j.title" = "Blocca";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
-"DVo-aG-piG.title" = "Close";
+"DVo-aG-piG.title" = "Chiudi";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "Dv1-io-Yv7"; */
-"Dv1-io-Yv7.title" = "Spelling and Grammar";
+"Dv1-io-Yv7.title" = "Ortografia e grammatica";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
-"F2S-fz-NVQ.title" = "Help";
+"F2S-fz-NVQ.title" = "Guida";
 
 /* Class = "NSMenuItem"; title = "WeChat Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "WeChat Help";
+"FKE-Sm-Kum.title" = "Guida di WeChat";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "FeM-D8-WVr"; */
-"FeM-D8-WVr.title" = "Substitutions";
+"FeM-D8-WVr.title" = "Sostituzioni";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "HFQ-gK-NFA"; */
-"HFQ-gK-NFA.title" = "Text Replacement";
+"HFQ-gK-NFA.title" = "Sostituzione testo";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "HFo-cy-zxI"; */
-"HFo-cy-zxI.title" = "Show Spelling and Grammar";
+"HFo-cy-zxI.title" = "Mostra ortografia e grammatica";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Show All";
+"Kd2-mp-pUS.title" = "Mostra tutto";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Bring All to Front";
+"LE2-aR-0XJ.title" = "Porta tutto davanti";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
+"NMo-om-nkz.title" = "Servizi";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "NwO-jn-zQU"; */
-"NwO-jn-zQU.title" = "View";
+"NwO-jn-zQU.title" = "Visualizza";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimize";
+"OY7-WF-poV.title" = "Riduci a icona";
 
 /* Class = "NSMenuItem"; title = "Hide WeChat"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide WeChat";
+"Olw-nP-bQN.title" = "Nascondi WeChat";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "Oyz-dy-DGm"; */
-"Oyz-dy-DGm.title" = "Stop Speaking";
+"Oyz-dy-DGm.title" = "Interrompi parlato";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoom";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Ruw-6m-B2m"; */
-"Ruw-6m-B2m.title" = "Select All";
+"Ruw-6m-B2m.title" = "Seleziona tutto";
 
 /* Class = "NSMenuItem"; title = "Make Text Bigger"; ObjectID = "T53-Qi-I9I"; */
-"T53-Qi-I9I.title" = "Make Text Bigger";
+"T53-Qi-I9I.title" = "Ingrandisci testo";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "TCW-kQ-Cao"; */
-"TCW-kQ-Cao.title" = "Enter Full Screen";
+"TCW-kQ-Cao.title" = "Entra in schermo intero";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
-"Td7-aD-5lo.title" = "Window";
+"Td7-aD-5lo.title" = "Finestra";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
-"UEZ-Bs-lqG.title" = "Capitalize";
+"UEZ-Bs-lqG.title" = "Maiuscolo";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Hide Others";
+"Vdr-fp-XzO.title" = "Nascondi altri";
 
 /* Class = "NSMenuItem"; title = "Favorites"; ObjectID = "W0w-Rf-nac"; */
-"W0w-Rf-nac.title" = "Favorites";
+"W0w-Rf-nac.title" = "Preferiti";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
-"W48-6f-4Dl.title" = "Edit";
+"W48-6f-4Dl.title" = "Modifica";
 
 /* Class = "NSMenuItem"; title = "New Chat"; ObjectID = "Was-JA-tGl"; */
-"Was-JA-tGl.title" = "New Chat";
+"Was-JA-tGl.title" = "Nuova chat";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "WeT-3V-zwk"; */
-"WeT-3V-zwk.title" = "Paste and Match Style";
+"WeT-3V-zwk.title" = "Incolla e abbina stile";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Ynk-f8-cLZ"; */
-"Ynk-f8-cLZ.title" = "Start Speaking";
+"Ynk-f8-cLZ.title" = "Inizia a parlare";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
+"aUF-d1-5bR.title" = "Finestra";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "bFP-pk-TYj"; */
-"bFP-pk-TYj.title" = "Find…";
+"bFP-pk-TYj.title" = "Trova...";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "File";
 
 /* Class = "NSMenuItem"; title = "Chats"; ObjectID = "c0w-2b-aA5"; */
-"c0w-2b-aA5.title" = "Chats";
+"c0w-2b-aA5.title" = "Chat";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "c8a-y6-VQd"; */
-"c8a-y6-VQd.title" = "Transformations";
+"c8a-y6-VQd.title" = "Trasformazioni";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
-"cwL-P1-jid.title" = "Smart Links";
+"cwL-P1-jid.title" = "Collegamenti avanzati";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
-"d9M-CD-aMd.title" = "Make Lower Case";
+"d9M-CD-aMd.title" = "Minuscolo";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "File";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
-"dRJ-4n-Yzg.title" = "Undo";
+"dRJ-4n-Yzg.title" = "Annulla";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
-"gVA-U4-sdL.title" = "Paste";
+"gVA-U4-sdL.title" = "Incolla";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
-"hQb-2v-fYv.title" = "Smart Quotes";
+"hQb-2v-fYv.title" = "Virgolette avanzate";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
-"hz2-CU-CR7.title" = "Check Document Now";
+"hz2-CU-CR7.title" = "Controlla documento";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
+"hz9-B4-Xy5.title" = "Servizi";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
-"mK6-2p-4JG.title" = "Check Grammar With Spelling";
+"mK6-2p-4JG.title" = "Controlla grammatica con ortografia";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
-"pa3-QI-u2k.title" = "Delete";
+"pa3-QI-u2k.title" = "Elimina";
 
 /* Class = "NSMenuItem"; title = "Make Text Normal Size"; ObjectID = "qOJ-rW-PZv"; */
-"qOJ-rW-PZv.title" = "Make Text Normal Size";
+"qOJ-rW-PZv.title" = "Testo di dimensioni normali";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "rbD-Rh-wIN"; */
-"rbD-Rh-wIN.title" = "Check Spelling While Typing";
+"rbD-Rh-wIN.title" = "Controlla ortografia durante la digitazione";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
-"rgM-f4-ycn.title" = "Smart Dashes";
+"rgM-f4-ycn.title" = "Lineette avanzate";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
-"tRr-pd-1PS.title" = "Data Detectors";
+"tRr-pd-1PS.title" = "Rilevatori di dati";
 
 /* Class = "NSMenu"; title = "WeChat"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "WeChat";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
-"uRl-iY-unG.title" = "Cut";
+"uRl-iY-unG.title" = "Taglia";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "uhT-j1-4rD"; */
-"uhT-j1-4rD.title" = "View";
+"uhT-j1-4rD.title" = "Visualizza";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "vmV-6d-7jI"; */
-"vmV-6d-7jI.title" = "Make Upper Case";
+"vmV-6d-7jI.title" = "Maiuscolo";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
-"wpr-3q-Mcd.title" = "Help";
+"wpr-3q-Mcd.title" = "Guida";
 
 /* Class = "NSMenuItem"; title = "Make Text Smaller"; ObjectID = "ww1-X1-Tnr"; */
-"ww1-X1-Tnr.title" = "Make Text Smaller";
+"ww1-X1-Tnr.title" = "Rimpicciolisci testo";
 
 // Jump to next unread chat
-"mnM-dX-1d2.title" = "Jump to Next Unread Chat"; // <-- CHECK THESE
+"mnM-dX-1d2.title" = "Salta a prossima chat non letta"; // <-- CHECK THESE
 
 // Next tab
-"93h-LX-ned.title" = "Previous Tab";
+"93h-LX-ned.title" = "Scheda precedente";
 
 // Previous tab
-"Y0d-ap-Jdz.title" = "Next Tab";
+"Y0d-ap-Jdz.title" = "Nuova scheda";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
-"x3v-GG-iWU.title" = "Copy";
+"x3v-GG-iWU.title" = "Copia";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "xrE-MZ-jX0"; */
-"xrE-MZ-jX0.title" = "Speech";
+"xrE-MZ-jX0.title" = "Parlato";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
-"z6F-FW-3nz.title" = "Show Substitutions";
+"z6F-FW-3nz.title" = "Mostra sostituzioni";
 
 /* Class = "NSMenuItem"; title = "Sticky/Unsticky"; ObjectID = "OyF-dO-bzd"; */
-"OyF-dO-bzd.title" = "Sticky/Unsticky";
+"OyF-dO-bzd.title" = "Attacca/stacca";
 
 /* Class = "NSMenuItem"; title = "Mute/Unmute"; ObjectID = "Lb5-5T-Aw9"; */
-"Lb5-5T-Aw9.title" = "Mute/Unmute";
+"Lb5-5T-Aw9.title" = "Disattiva/attiva audio";
 
 /* Class = "NSMenuItem"; title = "BackupRecover"; ObjectID = "cAx-9q-8Td"; */
-"cAx-9q-8Td.title" = "Backup and Restore";
+"cAx-9q-8Td.title" = "Backup e ripristino";
 
 /* Class = "NSMenuItem"; title = "Third-party support"; ObjectID = "Czb-W0-ajC"; */
-"Czb-W0-ajC.title" = "Powered by third party";
+"Czb-W0-ajC.title" = "Con tecnologia di terze parti";

@@ -169,4 +169,6 @@
     "JTPopoverViewSize_Logo" : {"W" : 56, "H" : 44},
 
     "JTPopoverViewArrowSize" : {"W" : 12, "H" : 6},
+  
+    "JTToolbarPanelSize" : {"W" : 480, "H" : 40},
 }

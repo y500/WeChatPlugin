@@ -1,0 +1,329 @@
+package mmsearch;
+
+import "mmbuiltintype.proto";
+
+message LbsLocationNew
+{
+    required float Longitude = 1;
+    required float Latitude = 2;
+    required int32 Precision = 3;
+    optional string MacAddr = 4;
+    optional string CellId = 5;
+    optional int32 GPSSource = 6;
+    optional string Address = 7; // ”√ªßgps∂‘”¶µƒµÿ÷∑
+}
+
+message UserItem
+{
+    required string UserName = 1;
+    required string MatchWord = 2;
+}
+
+
+message SearchHomePageRequest
+{
+    required uint64 BusinessType = 1;			// «Î«ÛÀ—À˜µƒ“µŒÒ¿‡–Õ
+    required string KeyWord = 2;                // À—À˜πÿº¸◊÷
+    optional LbsLocationNew Location = 3;          // Œª÷√–≈œ¢
+    optional uint32 RequestSrc = 4; // «Î«Û¿¥‘¥:»°÷µ”⁄mmbizprotodef.hµƒemMMBizSearchRequestSrc
+    repeated UserItem MatchUserList = 5;
+}
+
+message SearchHomePageResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+    optional uint64 BusinessType = 2;  // œ¬¥ŒÀ—À˜«Î«Û£¨¥¯…œµƒÀ—À˜µƒ“µŒÒ¿‡–Õ£¨µ±Œ™ø’ ±£¨¥˙±Ì ˝æ›“—¿≠»´
+    repeated BusinessContent ContentList = 3; // ∑µªÿ∏˜“µŒÒµƒÀ—À˜Ω·π˚,ContentΩ·π˚ÃÂŒ™√ø∏ˆ“µŒÒµƒΩ·π˚ºØ
+}
+
+message BusinessContent
+{
+    required uint64 BusinessType = 1;           // bussinesstypeŒ™SearchBusinessTypeÀ—À˜“µŒÒµƒ√∂æŸ÷µ
+    required uint32 ContinueFlag = 2;            // »°÷µ0£¨1. 0¥˙±Ì“—ŒﬁÀ—À˜Ω·π˚£¨1¥˙±Ì∏√À—À˜“µŒÒªπ”–¥˝¿≠»°µƒÀ—À˜Ω·π˚
+    optional string Title = 3;                   // ƒ≥“ª“µŒÒµƒ±ÍÃ‚ £®»Á≈Û”—»¶£¨π´÷⁄∫≈Œƒ’¬£©
+    repeated string KeyWordList = 4;
+    repeated BusinessResultItem ItemList = 5;  // ∏˜÷÷ui’π æƒ£∞Â
+    required uint32 TotalCount = 6;              // Ω·π˚ºØ ˝¡ø
+    required string SearchID = 7;
+    optional uint32 Offset = 8;
+}
+
+message BusinessProductItem
+{
+    required string ProductId = 1;
+    required string ProductName = 2;
+    required string SellerName = 3;
+    required string SellerUserName = 4;
+    optional uint32 Price = 5;
+    optional string ProductImgUrl = 6;
+}
+
+message BusinessResultItem
+{
+    optional uint32 Type = 1;                        // bussinesstypeœ¬µƒ◊”¿‡–Õ£¨»Á≈Û”—»¶“µŒÒ£¨”–Œƒ◊÷£¨Õº∆¨,feedsµ»◊”¿‡–Õ
+    optional BusinessContactItem ContactItem = 2;   // ◊®”√ƒ£∞Â”√”⁄√Ë ˆŒ¥πÿ◊¢π´÷⁄∫≈ªÚπ´÷⁄∫≈∑˛ŒÒ
+    optional BusinessCommonItem CommonItem = 3;     // Õ®”√ƒ£∞Â£¨√Ë ˆπ´÷⁄∫≈Œƒ’¬£¨Õ¯“≥£¨…Ã∆∑£¨≈Û”—»¶µ»“µŒÒ
+    required uint64 DocID = 4;
+    optional BusinessProductItem ProductItem = 5;   // Œ¢–≈–°µÍƒ£∞Ê
+    optional BusinessSnsItem SnsItem = 6;					//”√”⁄√Ë ˆ≈Û”—»¶¡–±ÌœÓ
+    optional BusinessPOIItem POIItem = 7;			//”√”⁄√Ë ˆPOI–≈œ¢
+}
+
+message CustomizedInfoNew
+{
+    required uint32 BrandFlag = 1;
+    optional string ExternalInfo = 2;
+    optional string BrandInfo = 3;
+    optional string BrandIconURL = 4;
+}
+
+message SearchOrRecommendItemNew {
+    required micromsg.SKBuiltinString_t UserName = 1;
+    required micromsg.SKBuiltinString_t NickName = 2;
+    optional int32 Sex = 3;
+    optional string Province = 4;
+    optional string City = 5;
+    optional string Signature = 6;
+    optional uint32 PersonalCard = 7;
+    optional uint32 VerifyFlag = 8;
+    optional string VerifyInfo = 9;
+    optional string Weibo = 10;
+    optional string Alias = 11;
+    optional string WeiboNickname = 12;
+    optional uint32 WeiboFlag = 13;
+    optional string Country = 14;
+    optional CustomizedInfoNew CustomizedInfo = 15;
+    optional string BigHeadImgUrl = 16;
+    optional string SmallHeadImgUrl = 17;
+}
+
+message ServiceItemField
+{
+    required bytes Name = 1;   //◊÷∂Œ√˚≥∆
+    required bytes Value = 2;  //◊÷∂Œ÷µ
+}
+
+message BusinessServiceInfo
+{
+    required bytes Title = 1; // ∑˛ŒÒ±ÍÃ‚
+    required bytes ServiceUrl = 2; // Ã·π©∑˛ŒÒµƒurl
+    repeated ServiceItemField ItemFieldList = 3; // ≤ªÕ¨¿‡–Õ∑˛ŒÒµƒ∆‰À¸◊÷∂Œ¡–±Ì
+}
+
+message BusinessContactItem
+{
+    required string NickName = 1;
+    optional BusinessDetailInfo DetailInfo = 2;
+    required SearchOrRecommendItemNew ContactItem = 3;
+    optional BusinessServiceInfo ServiceInfo = 4; // π´÷⁄∫≈À—À˜≥ˆµƒ°∞œ‡πÿ∑˛ŒÒ°±Ω·π˚ª·ÃÓ–¥∏√◊÷∂Œ
+    optional string JumpUrl = 5;
+}
+
+message BusinessCommonItem
+{
+    required string Title = 1;      // ±ÍÃ‚
+    required string Desc = 2;       // ’™“™
+    required string ThumbUrl = 3;   // Àı¬‘Õº
+    required BusinessDetailInfo DetailInfo = 4; // …ÁΩªπÿœµΩ⁄µ„
+    optional BusinessExtendInfo ExtendInfo = 5; // ¿©’πΩ⁄µ„£¨“µŒÒœ‡πÿ
+    required BusinessActionInfo ActionInfo = 6;  // ”√”⁄µ„ª˜Ã¯◊™
+}
+
+message BusinessDetailInfo {
+    required string IconUrl = 1;    // ◊¥Ã¨Õº±Í
+    optional string Descrption = 2; // ∏®÷˙–≈œ¢£∫»Á…ÁΩª◊¥Ã¨£¨¿¥‘¥µ»
+    optional string DescFormat = 3; //–Ë“™ÃÊªªusernameµƒ∏®÷˙–≈œ¢
+}
+
+message BusinessExtendInfo
+{
+// ‘› ±Œ™ø’
+}
+
+message BusinessActionInfo
+{
+    required uint32 Type = 1;  // ActionType, 0(ActionUnknown), 1(ActionUrlJump), 2(ActionInnerJump), 3(ActionAppJump)
+    optional string Url = 2;   // ”√”⁄ActionUrlJump, ActionAppJump
+}
+
+message BusinessSnsItem
+{
+    required uint64 Id = 1;      //≈Û”—»¶ID
+    required string ObjectDesc = 2;    //xml√Ë ˆ◊÷∂Œ
+}
+
+message BusinessPOIItem
+{
+    required string Title = 1;			//±ÍÃ‚
+    required string Url = 2;			// “≥√Ê¡¥Ω”
+    required string Position = 3;		//Œª÷√
+    required string DetailInfo = 4;		//œÍœ∏–≈œ¢
+    optional uint32 StarLevel = 5;		//–«º∂
+    optional string Average = 6;
+    optional uint32 POIFlag = 7;
+}
+
+message SearchDetailPageRequest
+{
+    required uint64 BusinessType = 1;          // «Î«ÛÀ—À˜µƒ“µŒÒ¿‡–Õ
+    required string KeyWord = 2;                // À—À˜πÿº¸◊÷
+    required uint32 Offset = 3;                // ∆ ºŒª÷√
+    optional LbsLocationNew Location = 4;         // Œª÷√–≈œ¢
+    optional uint32 RequestSrc = 5; // «Î«Û¿¥‘¥:»°÷µ”⁄mmbizprotodef.hµƒemMMBizSearchRequestSrc
+    repeated UserItem MatchUserList = 6;
+    optional uint32 Scene = 7;
+    optional string SearchID = 8;
+}
+
+message SearchDetailPageResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+    optional BusinessContent Content = 2;     // ∑µªÿµƒÀ—À˜Ω·π˚,”ÎSearchHomePage response µƒcontent“ª—˘
+    optional uint32 Offset = 3;
+}
+
+message TagSearchInfo
+{
+    optional uint32 TagType = 1;   // 取值于mmmsearchprotodef.h中enMMSearchTagSearchType，与Scene,BusinessType共同判断是哪个搜索类型的tag分类
+    optional string TagText = 2;   // 朋友圈tag_name; 朋友圈个人相册填MaxId(uint64_t转字符串)
+    optional string TagExtValue = 3;  // 朋友圈足迹填选择的国家或城市名城，utf8编码
+}
+
+message WxaSearchInfo
+{
+    optional uint32 h5_version = 1;
+    optional uint32 sub_type = 2; // for normal type & store type
+    optional string session_id = 3;
+    optional string keyword_id = 4;
+    optional string wording_id = 5;
+    optional uint32 sug_pos = 6;
+}
+
+message BoxWidgetUrlInfo
+{
+    optional string appid = 1;
+    optional uint32 version_type = 2; // mmbizprotodef.h enMMBizWxaVersionType
+    optional uint32 app_version = 3; // valid when version_type is MMBIZWXA_VERSIONTYPE_RELEASE
+    optional string extinfo = 4;
+}
+
+enum WebSearchBoxCtrlType {
+    TYPE_WIDGET_URL = 0x1;
+}
+
+message WebSearchBoxCtrlInfo // mmsearch.proto WebSearchRequest.BoxCtrlInfo
+{
+    optional uint64 ctrl_type = 1;
+    optional BoxWidgetUrlInfo widget_url_info = 2;
+}
+
+
+message WebSearchRequest
+{
+    required uint32 IsHomePage = 1;  // 主搜索1，子搜索0
+    required string Keyword = 2;  // 搜索关键字
+    required uint32 Offset = 3; // 下一页偏移
+    optional uint64 BusinessType = 4;  // 类型，子搜索有效
+    required uint32 CliVersion = 5;  // 客户端版本号
+    optional LbsLocationNew Location = 6;// 位置
+    repeated UserItem MatchUserList = 7;// 昵称 & username
+    required uint32 Scene = 8;       //入口的场景值
+    optional string SearchID = 9; // 客户端发起第一页的请求时，服务端会返回SearchId，客户端发起翻页请求时带上这个SearchId，从而串联一次完整的检索请求
+    required uint32 SceneActionType = 10; // 搜索场景类型，取值mmsearchprotodef.h的enMMSearchSceneActionType
+    optional string SugID = 11; // 与此次搜索相关的sugID
+    optional string PrefixSug = 12; // 与此次搜索相关的sug输入
+    optional uint32 SugType = 13; // sug类型，取值enMMSearchSugClickType
+    repeated string PrefixQuery = 14; // 请求sug时，填入前两次搜索请求query
+    optional uint32 DisplayPattern = 15 [default = 2];  // 动作模式，取值enMMSearchActionMode
+    optional TagSearchInfo TagInfo = 16;  // 朋友圈sug标识搜索类型以及poi_name等额外信息的字段
+    repeated CommKvItem ExtReqParams = 17;  // extral request kv-type params
+    repeated NumCondition NumConditions = 18;  // number conditions
+    optional string Language = 19;
+    optional bytes WeAppCtrlInfo = 20;  // Ð¡³ÌÐòÇëÇó×¨ÓÃ¶îÍâ²ÎÊý
+    optional string SessionID = 21;     // 客户端生成的sessionid
+    optional bytes BoxCtrlInfo = 22; // box额外的控制参数，由业务自己序列化并理解
+}
+
+message CommKvItem
+{
+    required string key = 1;
+    optional uint64 uint_value = 2;
+    optional string text_value = 3;
+}
+
+message NumCondition
+{
+    required uint32 field = 1;  // enMMSearchNumCondType
+    optional uint64 from = 2;
+    optional uint64 to = 3;
+}
+
+message WebSearchResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+    required uint32 UpdateCode = 2;  // 返回码：0正常、1更新
+    required uint32 Offset = 3;
+    required string Json = 4; // json
+}
+
+message SearchGuideRequest
+{
+    required uint32 Scene = 1; // 场景，取值于mmsearchprotodef.h的enMMSearchScene
+    required uint32 H5Version = 2; // 模板版本
+    optional LbsLocationNew Location = 3; // 位置
+    optional uint64 BusinessType = 4; // 类型，取值于mmsearchprotodef.h的enMMSearchBusinessType
+    optional string Language = 5;
+    optional uint64 ConfigParam = 6;  // config cgi返回给客户端，客户端回传的参数
+}
+
+message SearchGuideResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+    required string Json = 2; // json data
+    optional uint32 TimevalSec = 3; // 有效时间 秒
+    optional string SearchID = 4;
+}
+
+message ReportRequest
+{
+    optional uint32 Scene = 1; // 场景，取值于enMMSearchScene。搜索、推荐、sug都填。
+    optional string SearchId = 2; // 搜索产生的点击需要上报搜索唯一标识ID。
+    optional string RecommendId = 3; // 推荐产生的点击或者由推荐引导的搜索产生的点击需要上报推荐唯一标识ID。
+    optional uint64 BusinessType = 4; // 被点击的数据类型：搜索或sug时，取值于enMMSearchBusinessType；推荐时，取值于enMMSearchGuideTab。
+    optional string DocId = 5; // 被点击的数据唯一标识ID：搜索结果的DOC_ID，公众号的UIN，热词或sug结果的字符串，联系人的username等。
+    optional uint32 DocPos = 6; // 被点击的数据在该子类别中的位置，需要考虑翻页。搜索、推荐、sug都填。
+    optional uint32 TypePos = 7; // 全局首页、公众号首页等混合页中，被点击的数据子类别在所有类别中的位置。搜索、推荐填。
+    optional uint32 IsHomePage = 8; // 1是首页结果，0是详情页结果。搜索、推荐、sug都填。
+    optional uint64 Timestamp = 9; // 点击时的客户端时间戳，毫秒。搜索、推荐、sug都填。
+    optional uint32 Expand1 = 10; // 扩展字段，不同的数据类型可以用来表示不同的含义。暂不填。
+    optional string SuggestionId = 11; // sug产生的点击需要上报sug唯一标识ID。
+    optional uint32 ClickType = 12; // 点击类型：sug时，取值于enMMSearchSugClickType
+    optional string Expand2 = 13; // 扩展字段：sug时，填queryexpand||docexpand; 如果是音乐点击则 1表示点击播放 2表示点击进入第三方h5 3表示播放全部
+    optional string LogString = 14;  // 当有这个字段时，pb的其他字段都失效，由cgi自行解析上报字段信息
+    optional uint32 ClickSource = 15;  // 点击子类型，与BusinessType相关。若BusinessType==2（资讯检索）公众号文章：1， 外链文章：2；若BusinessType == 8(朋友圈)，则该字段表示feed子类型：图片：1，文字：2，普通链接：3，音乐：4，视频：5，商品：9，表情：10，普通商品：12，卡券：13，电视节目：14，小视频：15。sug时取值于enMMSearchSugResultType
+    optional uint32 SceneActionType = 16;  // 搜索场景类型，取值mmsearchprotodef.h的enMMSearchSceneActionType
+    optional uint32 H5Version = 17;  // H5模板版本
+}
+
+message ReportResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+}
+
+message ConfigRequest
+{
+    repeated string ConfigKeys = 1;  // 配置key
+    optional uint32 H5Version = 2;   // H5模板号
+    optional string Language = 3;    // 客户端语言
+    optional uint32 Scene = 4;  // 场景值
+    optional uint64 BusinessType = 5;  // 请求的业务类型
+    optional string NetType = 6;   // 网络状态，wifi, 4g, 3g, 2g
+    optional LbsLocationNew Location = 7;  // 位置
+    repeated CommKvItem ExtParams = 8;  // 由H5传递的额外参数
+}
+
+message ConfigResponse
+{
+    optional micromsg.BaseResponse BaseResponse = 1;
+    required string Json = 2;
+}
