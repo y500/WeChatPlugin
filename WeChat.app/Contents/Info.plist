@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17A405</string>
+	<string>15G1212</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -29,21 +29,21 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>9814</string>
+	<string>7833</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>8E3004b</string>
+	<string>8A218a</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>16E185</string>
+	<string>16A300</string>
 	<key>DTSDKName</key>
 	<string>macosx10.12</string>
 	<key>DTXcode</key>
-	<string>0833</string>
+	<string>0800</string>
 	<key>DTXcodeBuild</key>
-	<string>8E3004b</string>
+	<string>8A218a</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.social-networking</string>
 	<key>LSFileQuarantineEnabled</key>
@@ -51,11 +51,11 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>MMBetaVersion</key>
-	<string>Beta 16</string>
+	<string>Beta 1.0.1</string>
 	<key>MMBundleVersion</key>
-	<string>2.3.5.16</string>
+	<string>2.2.0.1</string>
 	<key>MMGitCommitCount</key>
-	<string>9814</string>
+	<string>7833</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -71,7 +71,5 @@
 	<string>NSApplication</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
-	<key>TeamIdentifier</key>
-	<string>5A4RE8SF68.</string>
 </dict>
 </plist>

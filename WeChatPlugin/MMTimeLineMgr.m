@@ -49,6 +49,7 @@
     
     MMCGIService *cgiService = [[CBGetClass(MMServiceCenter) defaultCenter] getService:CBGetClass(MMCGIService)];
     [cgiService RequestCGI:cgiWrap delegate:self];
+    
 }
 
 #pragma mark - MMCGIDelegate
