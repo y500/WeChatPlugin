@@ -2,8 +2,8 @@
 //  MMTimeLineMainViewController.h
 //  MacWeChatTimeLinePlugin
 //
-//  Created by CorbinChen on 16/8/16.
-//  Copyright © 2016年 CorbinChen. All rights reserved.
+//  Created by nato on 16/8/16.
+//  Copyright © 2016年 nato. All rights reserved.
 //
 
 #import "WeChatPluginHeader.h"

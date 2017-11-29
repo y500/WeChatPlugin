@@ -2,8 +2,8 @@
 //  MMTimeLineViewController.m
 //  WeChatPlugin
 //
-//  Created by CorbinChen on 2017/3/24.
-//  Copyright © 2017年 CorbinChen. All rights reserved.
+//  Created by nato on 2017/1/22.
+//  Copyright © 2017年 github:natoto. All rights reserved.
 //
 
 #import "MMTimeLineViewController.h"
@@ -38,6 +38,89 @@
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
     NSScrollView *scrollView = [self.tableView enclosingScrollView];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(scrollViewDidScroll:) name:NSViewBoundsDidChangeNotification object:scrollView.contentView];
+    
+    NSButton * btn = [NSButton buttonWithTitle:@"导出json" target:self action:@selector(exportjson:)];
+    [self.view addSubview:btn];
+    btn.layer.backgroundColor = [NSColor blueColor].CGColor;
+    btn.frame = NSMakeRect(self.view.bounds.size.width - 100, 20, 80, 50);
+    
+}
+
+- (void)openAlertPanel:(NSString *)message{
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    
+    //增加一个按钮
+    [alert addButtonWithTitle:@"OK"];//1000
+    
+    //提示的标题
+    [alert setMessageText:@"提示"];
+    //提示的详细内容
+    [alert setInformativeText:message];
+    //设置告警风格
+    [alert setAlertStyle:NSAlertStyleInformational];
+    
+    //开始显示告警
+    [alert beginSheetModalForWindow:self.view.window
+                  completionHandler:^(NSModalResponse returnCode){
+                      //用户点击告警上面的按钮后的回调
+                      NSLog(@"returnCode : %ld",returnCode);
+                  }
+     ];
+}
+
+-(IBAction)exportjson:(id)sender{
+    
+    NSPasteboard * board = [NSPasteboard generalPasteboard];
+    NSString * json = [NSString stringWithFormat:@"[%@]",[self.timeLineMgr.jsonlist componentsJoinedByString:@","]];
+//    [board setString:json forType:NSPasteboardTypeString];
+//    [board writeFileContents:json];
+    [board declareTypes:[NSArray arrayWithObject:NSStringPboardType]
+               owner:self];
+    [board setString:json forType:NSPasteboardTypeString];
+    [self writetofile:json];
+    [self openAlertPanel:@"朋友圈信息已导出到桌面，请查阅wechatTimeLine文件夹"];
+//    [self openAlertPanel:@"朋友圈信息已复制到粘贴板,您可以去粘贴了"];
+    
+}
+
+-(void)writetofile:(NSString *)string{
+    
+    NSFileManager *fm = [NSFileManager defaultManager];//创建NSFileManager实例
+    //获得文件路径，第一个参数是要定位的路径 NSApplicationDirectory-获取应用程序路径，NSDocumentDirectory-获取文档路径
+    //第二个参数是要定义的文件系统域
+    NSArray *paths = [fm URLsForDirectory:NSDesktopDirectory inDomains:NSUserDomainMask];
+    //沙盒路径
+    NSURL *path = [paths objectAtIndex:0];
+    //要查找的文件
+    
+    NSString *myFiledFolder = [path.relativePath stringByAppendingFormat:@"/wechatTimeLine"];
+    
+    NSString *myFiled = [myFiledFolder stringByAppendingFormat:@"/%.0f.json",[NSDate timeIntervalSinceReferenceDate]];
+    //判断文件是否存在
+    BOOL result = [fm fileExistsAtPath:myFiled];
+    //如果文件不存在
+    if (!result) {
+        NSString *content = string;
+        //创建文件夹
+        [fm createDirectoryAtPath:myFiledFolder withIntermediateDirectories:YES attributes:nil error:nil];
+        //文件
+        BOOL isCreate = [fm createFileAtPath:myFiled contents:[content dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        if (isCreate) {
+            NSLog(@"创建成功");
+            NSError * error;
+//            [string writeToFile:myFiled atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            
+            if (error) {
+                NSLog(@"save error:%@",error.description);
+            }
+        }
+        else{
+            NSLog(@"🌺 创建失败");
+        }
+    }
+    
+    NSLog(@"OUTPUT:%@",myFiled);
     
 }
 

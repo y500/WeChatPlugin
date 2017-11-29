@@ -2,8 +2,8 @@
 //  WeChatPlugin.m
 //  WeChatPlugin
 //
-//  Created by CorbinChen on 2017/3/24.
-//  Copyright (c) 2017年 CorbinChen. All rights reserved.
+//  Created by nato on 2017/1/22.
+//  Copyright (c) 2017年 github:natoto. All rights reserved.
 //
 
 #import "WeChatPlugin.h"
@@ -99,6 +99,7 @@
     NSMutableArray *viewControllers = [vcs mutableCopy];
     [viewControllers addObject:timeLineMainVC];
     [self cb_setViewControllers:[viewControllers copy]];
+
 }
 
 -(void)cb_mmDidLoad{

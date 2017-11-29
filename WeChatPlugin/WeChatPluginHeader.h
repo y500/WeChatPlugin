@@ -2,8 +2,8 @@
 //  WeChatPluginHeader.h
 //  WeChatPlugin
 //
-//  Created by CorbinChen on 2017/3/24.
-//  Copyright (c) 2017年 CorbinChen. All rights reserved.
+//  Created by nato on 2017/1/22.
+//  Copyright (c) 2017年 github:natoto. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,8 +12,8 @@
 //  MacWeChatTimeLinePluginHeader.h
 //  MacWeChatTimeLinePlugin
 //
-//  Created by CorbinChen on 16/8/16.
-//  Copyright © 2016年 CorbinChen. All rights reserved.
+//  Created by nato on 16/8/16.
+//  Copyright © 2016年 nato. All rights reserved.
 //
 
 typedef void(^CDUnknownBlockType)(void);

@@ -96,6 +96,8 @@
 		F8348B7F1FBEB9F1006A4FA3 /* TKRemoteControlCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F8348B531FBEB9F1006A4FA3 /* TKRemoteControlCell.h */; };
 		F8348B801FBEB9F1006A4FA3 /* TKRemoteControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8348B541FBEB9F1006A4FA3 /* TKRemoteControlCell.m */; };
 		F8348B811FBEB9F1006A4FA3 /* TKRemoteControlCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8348B551FBEB9F1006A4FA3 /* TKRemoteControlCommands.plist */; };
+		F843D9D91FCE923600C284B4 /* NSObject+ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F843D9D71FCE923600C284B4 /* NSObject+ObjectMap.m */; };
+		F843D9DA1FCE923600C284B4 /* NSObject+ObjectMap.h in Headers */ = {isa = PBXBuildFile; fileRef = F843D9D81FCE923600C284B4 /* NSObject+ObjectMap.h */; };
 		F8B637F51E8A571B00ACF4C1 /* MMPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B637F31E8A571B00ACF4C1 /* MMPreviewViewController.h */; };
 		F8B637F61E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B637F41E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h */; };
 /* End PBXBuildFile section */
@@ -206,6 +208,8 @@
 		F8348B531FBEB9F1006A4FA3 /* TKRemoteControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlCell.h; sourceTree = "<group>"; };
 		F8348B541FBEB9F1006A4FA3 /* TKRemoteControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlCell.m; sourceTree = "<group>"; };
 		F8348B551FBEB9F1006A4FA3 /* TKRemoteControlCommands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TKRemoteControlCommands.plist; sourceTree = "<group>"; };
+		F843D9D71FCE923600C284B4 /* NSObject+ObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjectMap.m"; sourceTree = "<group>"; };
+		F843D9D81FCE923600C284B4 /* NSObject+ObjectMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ObjectMap.h"; sourceTree = "<group>"; };
 		F8B637F31E8A571B00ACF4C1 /* MMPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewViewController.h; sourceTree = "<group>"; };
 		F8B637F41E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewViewPageInfo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -370,6 +374,7 @@
 		80E551EC1E85613300EB428F /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F843D9D61FCE923600C284B4 /* NSObject-ObjectMap */,
 				80E551ED1E85616200EB428F /* NSDate+StatusTimeDescription.h */,
 				80E551EE1E85616200EB428F /* NSDate+StatusTimeDescription.m */,
 				80E551F21E85620C00EB428F /* NSString+XMLDictionary.h */,
@@ -572,6 +577,15 @@
 			path = RemoteControl;
 			sourceTree = "<group>";
 		};
+		F843D9D61FCE923600C284B4 /* NSObject-ObjectMap */ = {
+			isa = PBXGroup;
+			children = (
+				F843D9D71FCE923600C284B4 /* NSObject+ObjectMap.m */,
+				F843D9D81FCE923600C284B4 /* NSObject+ObjectMap.h */,
+			);
+			path = "NSObject-ObjectMap";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -583,6 +597,7 @@
 				80E551E01E8559E700EB428F /* MMTimeLineViewController.h in Headers */,
 				F8348B691FBEB9F1006A4FA3 /* TKIgnoreSessonModel.h in Headers */,
 				F8348B701FBEB9F1006A4FA3 /* TKBaseModel.h in Headers */,
+				F843D9DA1FCE923600C284B4 /* NSObject+ObjectMap.h in Headers */,
 				F8B637F51E8A571B00ACF4C1 /* MMPreviewViewController.h in Headers */,
 				F8348B751FBEB9F1006A4FA3 /* NSView+Action.h in Headers */,
 				F8348B771FBEB9F1006A4FA3 /* Color.h in Headers */,
@@ -670,7 +685,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = CorbinChen;
+				ORGANIZATIONNAME = natoto;
 				TargetAttributes = {
 					803DAFBD1E853D3F00ADCC86 = {
 						CreatedOnToolsVersion = 8.2;
@@ -788,6 +803,7 @@
 				F8348B6C1FBEB9F1006A4FA3 /* TKBaseModel.m in Sources */,
 				80E551AA1E853FA100EB428F /* MMStatusCell.m in Sources */,
 				80E551F01E85616200EB428F /* NSDate+StatusTimeDescription.m in Sources */,
+				F843D9D91FCE923600C284B4 /* NSObject+ObjectMap.m in Sources */,
 				80E551B21E853FA100EB428F /* MMStatusLinkMediaObject.m in Sources */,
 				F8348B731FBEB9F1006A4FA3 /* NSView+Action.m in Sources */,
 				F8348B6D1FBEB9F1006A4FA3 /* TKIgnoreSessonModel.m in Sources */,
@@ -966,12 +982,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 32M62TMXC7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = WeChatPlugin/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.corbin.WeChatPlugin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nato.WeChatPlugin;
 				PRODUCT_NAME = WeChat;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -979,12 +998,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 32M62TMXC7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = WeChatPlugin/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.corbin.WeChatPlugin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nato.WeChatPlugin;
 				PRODUCT_NAME = WeChat;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

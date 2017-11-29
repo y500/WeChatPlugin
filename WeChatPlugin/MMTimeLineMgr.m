@@ -2,12 +2,12 @@
 //  MMTimeLineMgr.m
 //  WeChatPlugin
 //
-//  Created by CorbinChen on 2017/3/24.
-//  Copyright © 2017年 CorbinChen. All rights reserved.
+//  Created by nato on 2017/1/22.
+//  Copyright © 2017年 github:natoto. All rights reserved.
 //
 
 #import "MMTimeLineMgr.h"
-
+#import "NSObject+ObjectMap.h"
 @interface MMTimeLineMgr () <MMCGIDelegate>
 
 @property (nonatomic, assign, getter=isRequesting) BOOL requesting;
@@ -52,19 +52,35 @@
     
 }
 
+- (NSMutableArray *)jsonlist {
+    if (!_jsonlist) {
+        _jsonlist = [[NSMutableArray alloc] init];
+    }
+    return _jsonlist;
+}
 #pragma mark - MMCGIDelegate
 
 - (void)OnResponseCGI:(BOOL)arg1 sessionId:(unsigned int)arg2 cgiWrap:(MMCGIWrap *)cgiWrap {
     NSLog(@"%d %d %@", arg1, arg2, cgiWrap);
     SnsTimeLineRequest *request = (SnsTimeLineRequest *)cgiWrap.m_requestPb;
     SnsTimeLineResponse *response = (SnsTimeLineResponse *)cgiWrap.m_responsePb;
+ 
     self.session = response.session;
     NSMutableArray *statuses = [NSMutableArray new];
+    NSString * jsonstr = @"";
     for (SnsObject *snsObject in response.objectList) {
         MMStatus *status = [MMStatus new];
         [status updateWithSnsObject:snsObject];
         [statuses addObject:status];
+        
+        MMStatusSimple *st = [MMStatusSimple new];
+        [st updateWithSnsObject:snsObject];
+        NSString * stajson = [st JSONString];
+        jsonstr = [jsonstr stringByAppendingFormat:@"%@,",stajson];
     }
+    jsonstr = [jsonstr stringByAppendingFormat:@""];
+    NSLog(@"\n\njson:\n%@\n\n",jsonstr);
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         BOOL isRefresh = request.maxId == 0;
         if (isRefresh) {
@@ -72,9 +88,11 @@
             if (statuses.count) {
                 self.statuses = statuses;
             }
+            self.jsonlist = [@[jsonstr] mutableCopy];
         }
         else {
             [self.statuses addObjectsFromArray:statuses];
+            [self.jsonlist addObject:jsonstr];
         }
         self.requesting = false;
         if (self.delegate && [self.delegate respondsToSelector:@selector(onTimeLineStatusChange)]) {

@@ -2,8 +2,8 @@
 //  TKAutoReplyWindowController.h
 //  WeChatPlugin
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by nato on 2017/1/11.
+//  Copyright © 2017年 github:natototo. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

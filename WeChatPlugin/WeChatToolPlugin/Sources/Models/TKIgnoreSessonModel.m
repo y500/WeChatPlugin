@@ -2,8 +2,8 @@
 //  TKIgnoreSessonModel.m
 //  WeChatPlugin
 //
-//  Created by TK on 2017/9/15.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by nato on 2017/9/15.
+//  Copyright © 2017年 github:natototo. All rights reserved.
 //
 
 #import "TKIgnoreSessonModel.h"

@@ -4,28 +4,16 @@ Plugin For Mac WeChat.
  
 
 ![](http://ofg6kncyv.bkt.clouddn.com/WeChat_logo_icon.png)
+ 
 
 ## 说明
 *  直接运行 WeChatPlugin.xcworkspace
 
 
 ## 功能
+* 导出朋友圈 
 * 浏览朋友圈
-* 自动登录
-
-![朋友圈](./snap/wechattimeline@2x.png)
-
-
-## 新增功能WeChatPlugin- 小助手功能
-
-![](https://img.shields.io/badge/platform-osx-lightgrey.svg) ![](https://img.shields.io/badge/support-wechat%202.2.8-green.svg)
-    
-
-![微信小助手.png](http://upload-images.jianshu.io/upload_images/965383-31708af611b55ca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-  
----
-
-### 功能
+* 自动登录  
 * 消息自动回复
 * 消息防撤回
 * 远程控制
@@ -35,6 +23,24 @@ Plugin For Mac WeChat.
 * 微信窗口置顶
 * 会话多选删除
 
+#### 朋友圈
+
+![朋友圈](./snap/wechattimeline@2x.png)
+
+
+####  导出朋友圈到桌面
+![导出朋友圈](./snap/outputtimeline@2x.png)
+
+
+---
+
+### 新增功能WeChatPlugin- 小助手功能
+
+![](https://img.shields.io/badge/platform-osx-lightgrey.svg) ![](https://img.shields.io/badge/support-wechat%202.2.8-green.svg)
+    
+
+![微信小助手.png](http://upload-images.jianshu.io/upload_images/965383-31708af611b55ca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  
 远程控制：
 
 >远程控制新增指令发送成功回调、发送`获取指令`获得当前所有远程控制信息。
@@ -123,5 +129,8 @@ Plugin For Mac WeChat.
 
 欢迎关注微信公众号👆
  
+ ![有钱任性欢迎打赏](snap/zanshangcode.jpg)
+ 
+有钱任性赞赏码👆
 
 

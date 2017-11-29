@@ -2,8 +2,8 @@
 //  NSString+XMLDictionary.m
 //  WeChatManagerClient
 //
-//  Created by CorbinChen on 2016/11/11.
-//  Copyright © 2016年 CorbinChen. All rights reserved.
+//  Created by nato on 2016/11/11.
+//  Copyright © 2016年 nato. All rights reserved.
 //
 
 #import "NSString+XMLDictionary.h"

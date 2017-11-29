@@ -2,8 +2,8 @@
 //  TKAutoReplyModel.m
 //  WeChatPlugin
 //
-//  Created by TK on 2017/8/18.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by nato on 2017/8/18.
+//  Copyright © 2017年 github:natototo. All rights reserved.
 //
 
 #import "TKAutoReplyModel.h"
