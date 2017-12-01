@@ -7,8 +7,18 @@ Plugin For Mac WeChat.
  
 
 ## 说明
+
 *  直接运行 WeChatPlugin.xcworkspace
 
+## 版本演示
+
+获取编译好的MAC微信方式
+
+1. 关注“极限水果”公众号
+2. 发送暗号: “MAC微信”
+
+即可收到下载地址
+TIPS: 打开注意，允许任何来源允许应用
 
 ## 功能
 * 导出朋友圈 
