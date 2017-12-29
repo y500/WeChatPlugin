@@ -6,6 +6,10 @@ Plugin For Mac WeChat.
 ![](http://ofg6kncyv.bkt.clouddn.com/WeChat_logo_icon.png)
  
 
+## 提示
+
+wechatplugin 仅限于个人爱好，技术研究，不用于商用，请大家遵守。如有纠纷，后果自负
+
 ## 说明
 
 *  直接运行 WeChatPlugin.xcworkspace
