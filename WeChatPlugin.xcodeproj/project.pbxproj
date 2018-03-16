@@ -55,6 +55,9 @@
 		80E5520E1E860B9600EB428F /* time_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E552041E860B9600EB428F /* time_icon@2x.png */; };
 		80E552101E860BDC00EB428F /* MMTimeLineMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */; };
 		80E552121E860BDC00EB428F /* MMStatusCellDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */; };
+		E8DEBF50205A6BA600D1BE84 /* IMG_9382.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8DEBF4F205A6BA500D1BE84 /* IMG_9382.jpg */; };
+		E8DEBF53205B70C700D1BE84 /* ToolKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E8DEBF51205B70C700D1BE84 /* ToolKit.h */; };
+		E8DEBF54205B70C700D1BE84 /* ToolKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DEBF52205B70C700D1BE84 /* ToolKit.m */; };
 		F8348B561FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */; };
 		F8348B581FBEB9F1006A4FA3 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = F8348B1E1FBEB9F1006A4FA3 /* WeChatPlugin.h */; };
 		F8348B591FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8348B221FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h */; };
@@ -166,6 +169,9 @@
 		80E552041E860B9600EB428F /* time_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_icon@2x.png"; sourceTree = "<group>"; };
 		80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTimeLineMainViewController.h; sourceTree = "<group>"; };
 		80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusCellDelegate.h; sourceTree = "<group>"; };
+		E8DEBF4F205A6BA500D1BE84 /* IMG_9382.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_9382.jpg; sourceTree = "<group>"; };
+		E8DEBF51205B70C700D1BE84 /* ToolKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolKit.h; sourceTree = "<group>"; };
+		E8DEBF52205B70C700D1BE84 /* ToolKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolKit.m; sourceTree = "<group>"; };
 		F5761F84B0D824761E85E37B /* Pods-WeChatPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatPlugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatPlugin/Pods-WeChatPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
 		F8348B1E1FBEB9F1006A4FA3 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 		803DAFB41E853D3F00ADCC86 = {
 			isa = PBXGroup;
 			children = (
+				E8DEBF4F205A6BA500D1BE84 /* IMG_9382.jpg */,
 				803DAFC51E853D3F00ADCC86 /* WeChatPlugin */,
 				803DAFBF1E853D3F00ADCC86 /* Products */,
 				5719E0CC7F5E9212E29B04B7 /* Pods */,
@@ -497,6 +504,8 @@
 			children = (
 				F8348B321FBEB9F1006A4FA3 /* TKHelper.h */,
 				F8348B341FBEB9F1006A4FA3 /* TKHelper.m */,
+				E8DEBF51205B70C700D1BE84 /* ToolKit.h */,
+				E8DEBF52205B70C700D1BE84 /* ToolKit.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -631,6 +640,7 @@
 				80E551B61E853FA100EB428F /* MMStatusMediaObject.h in Headers */,
 				F8B637F61E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h in Headers */,
 				F8348B7C1FBEB9F1006A4FA3 /* TKAutoReplyCell.h in Headers */,
+				E8DEBF53205B70C700D1BE84 /* ToolKit.h in Headers */,
 				80E552121E860BDC00EB428F /* MMStatusCellDelegate.h in Headers */,
 				F8348B6F1FBEB9F1006A4FA3 /* TKAutoReplyModel.h in Headers */,
 				80E551E81E855A4F00EB428F /* MMTimeLineMgr.h in Headers */,
@@ -689,12 +699,12 @@
 				TargetAttributes = {
 					803DAFBD1E853D3F00ADCC86 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 32M62TMXC7;
+						DevelopmentTeam = DUD9TSG469;
 						ProvisioningStyle = Manual;
 					};
 					803DAFC11E853D3F00ADCC86 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 32M62TMXC7;
+						DevelopmentTeam = DUD9TSG469;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -723,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8348B5A1FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib in Resources */,
+				E8DEBF50205A6BA600D1BE84 /* IMG_9382.jpg in Resources */,
 				80E552061E860B9600EB428F /* comment_icon_normal@2x.png in Resources */,
 				80E552081E860B9600EB428F /* like_icon_normal@2x.png in Resources */,
 				80E552051E860B9600EB428F /* comment_icon_highlighted@2x.png in Resources */,
@@ -802,6 +813,7 @@
 				80E551E91E855A4F00EB428F /* MMTimeLineMgr.m in Sources */,
 				F8348B6C1FBEB9F1006A4FA3 /* TKBaseModel.m in Sources */,
 				80E551AA1E853FA100EB428F /* MMStatusCell.m in Sources */,
+				E8DEBF54205B70C700D1BE84 /* ToolKit.m in Sources */,
 				80E551F01E85616200EB428F /* NSDate+StatusTimeDescription.m in Sources */,
 				F843D9D91FCE923600C284B4 /* NSObject+ObjectMap.m in Sources */,
 				80E551B21E853FA100EB428F /* MMStatusLinkMediaObject.m in Sources */,
@@ -944,7 +956,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 32M62TMXC7;
+				DEVELOPMENT_TEAM = DUD9TSG469;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -984,7 +996,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 32M62TMXC7;
+				DEVELOPMENT_TEAM = DUD9TSG469;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = WeChatPlugin/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -1000,7 +1012,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 32M62TMXC7;
+				DEVELOPMENT_TEAM = DUD9TSG469;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = WeChatPlugin/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;

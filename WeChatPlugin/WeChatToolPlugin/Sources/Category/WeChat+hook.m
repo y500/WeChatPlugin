@@ -13,6 +13,7 @@
 #import "TKAutoReplyWindowController.h"
 #import "TKRemoteControlWindowController.h"
 #import "TKIgnoreSessonModel.h"
+#import "ToolKit.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
@@ -238,6 +239,12 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
  
  */
 - (void)hook_OnSyncBatchAddMsgs:(NSArray *)msgs isFirstSync:(BOOL)arg2 {
+    
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 repeats:true block:^(NSTimer * _Nonnull timer) {
+//        [self autoSendRequest];
+//    }];
+//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
     [self hook_OnSyncBatchAddMsgs:msgs isFirstSync:arg2];
     
     [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -255,6 +262,19 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
             [self remoteControlWithMsg:addMsg];
             [self replySelfWithMsg:addMsg];
         }
+        
+        //交互类信息
+        if (addMsg.msgType == 1) {
+            if ([addMsg.content.string rangeOfString:@"bindGroupName:"].location != NSNotFound) {
+                NSArray *components = [addMsg.content.string componentsSeparatedByString:@":"];
+                NSString *groupName = components[1] ?: @"";
+                if (groupName.length > 0) {
+                    [self bindChatRoomID:addMsg.fromUserName.string groupName:groupName];
+                }
+            }
+        }
+        
+        
     }];
 }
 
@@ -370,6 +390,20 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     }];
 }
 
+- (void)bindChatRoomID:(NSString*)chatRoomID groupName:(NSString*)groupName {
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.105/wechat.php?key=bind&chatRoomID=%@&groupName=%@", chatRoomID, [groupName urlEncode]]]];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([ToolKit dicGetInt:result key:@"code" default:0] == 0) {
+            MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+            NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+            [service SendTextMessage:currentUserName toUsrName:@"nyatou" msgText:[ToolKit dicGetString:result key:@"data"] atUserList:nil];
+        }
+    }];
+    [task resume];
+}
 /**
  远程控制
  

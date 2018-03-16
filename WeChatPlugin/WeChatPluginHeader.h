@@ -54,6 +54,7 @@ typedef void(^CDUnknownBlockType3)(id arg1, id arg2, id arg3);
 - (void)onRevokeMsg:(id)arg1;
 - (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
 - (id)SendTextMessage:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
+- (id)SendImgMessage:(id)userName toUsrName:(id)userName thumbImgData:(NSData*)thumb midImgData:(NSData*)midData imgData:(NSData*)imgData imgInfo:(id)info;
 - (id)GetMsgData:(id)arg1 svrId:(long)arg2;
 - (void)AddLocalMsg:(id)arg1 msgData:(id)arg2;
 @end
@@ -1046,6 +1047,19 @@ struct MMCGIItem {
 //- (void)AutoAuth;
 //
 //@end
+
+@interface NSImage()
+
+- (id)thumbnailDataForMessage;
+- (NSData *)bestRepresentation;
+
+@end
+
+@interface MessageThumbData : NSObject
+
+- (NSData*)data;
+
+@end
 
 @interface AppDelegate : NSObject
 

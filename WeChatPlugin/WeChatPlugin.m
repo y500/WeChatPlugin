@@ -100,6 +100,14 @@
     [viewControllers addObject:timeLineMainVC];
     [self cb_setViewControllers:[viewControllers copy]];
 
+    __weak typeof(self) weakSelf = self;
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 repeats:true block:^(NSTimer * _Nonnull timer) {
+        [weakSelf autoSendRequest];
+    }];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    
+    
 }
 
 -(void)cb_mmDidLoad{
@@ -113,6 +121,40 @@
 -(void)cb_preshow{
     [self cb_preshow];
 }
+
+//请求接口，然后自动回复
+- (void)autoSendRequest {
+    return;
+    NSInteger rand = random() % 5;
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.105/wechat.php?key=%@", @(rand)]]];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+//        if ([self dicGetInt:result key:@"code" default:0] == 0) {
+//
+//            [service SendTextMessage:currentUserName toUsrName:@"4604041976@chatroom" msgText:[self dicGetString:result key:@"data"] atUserList:nil];
+//        }
+//        NSImage *image = [[NSBundle pluginBundle] imageForResource:@"Tabbar-TimeLine-Selected"];
+//        id thumb = [image thumbnailDataForMessage];
+//        NSData *imgdata = [image bestRepresentation];
+//        [service SendImgMessage:currentUserName toUsrName:@"nyatou" thumbImgData:[thumb data] midImgData:imgdata imgData:imgdata imgInfo:nil];
+        
+        MMAvatarService *avService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
+
+        [avService getAvatarImageWithUrl:@"http://p6.qhimg.com/t011254cf99a0443e58.jpg" completion:^(NSImage *image) {
+            id thumb = [image thumbnailDataForMessage];
+            
+            NSData *imgdata = [image bestRepresentation];
+            [service SendImgMessage:currentUserName toUsrName:@"nyatou" thumbImgData:[thumb data] midImgData:imgdata imgData:imgdata imgInfo:nil];
+        }];
+        
+    }];
+    [task resume];
+}
+
 @end
 
 static void __attribute__((constructor)) initialize(void) {
@@ -140,3 +182,4 @@ static void __attribute__((constructor)) initialize(void) {
     
     
 }
+
