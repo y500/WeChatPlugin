@@ -1052,6 +1052,7 @@ struct MMCGIItem {
 
 - (id)thumbnailDataForMessage;
 - (NSData *)bestRepresentation;
+- (NSData *)JPEGRepresentationWithCompressionFactor:(CGFloat)factor;
 
 @end
 

@@ -12,7 +12,8 @@
 #import "MMTimeLineViewController.h"
 #import "WeChat+hook.h"
 #import "MMChatsTableCellView+hook.h"
-
+#import "GCDWebServer.h"
+#import "GCDWebServerDataResponse.h"
 
 #pragma mark - Plugin
 
@@ -107,7 +108,49 @@
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     
+    GCDWebServer *server = [[GCDWebServer alloc] init];
+    [server addDefaultHandlerForMethod:@"GET"
+                              requestClass:[GCDWebServerRequest class]
+                              processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+                                  
+                                  MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+                                  NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+                                  
+                                  if ([request.URL.path isEqualToString:@"/sendText"]) {
+                                      NSString *content = request.query[@"text"];
+                                      
+                                      if (content.length == 0) {
+                                          return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
+                                      }
+                                      
+                                      [service SendTextMessage:currentUserName toUsrName:@"4604041976@chatroom" msgText:content atUserList:nil];
+                                  }else if ([request.URL.path isEqualToString:@"/sendImg"]) {
+                                      NSString *url = request.query[@"url"];
+                                      MMAvatarService *avService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
+                                      
+                                      [avService getAvatarImageWithUrl:url ?: @"http://p6.qhimg.com/t011254cf99a0443e58.jpg" completion:^(NSImage *image) {
+                                          id thumb = [image thumbnailDataForMessage];
+                                          
+                                          NSData *imgdata = [image bestRepresentation];
+                                          
+                                          NSData *middata = imgdata;
+                                          
+                                          CGFloat factor = 0.8;
+                                          while ([middata length] / 1000 > 800) {
+                                              middata = [image JPEGRepresentationWithCompressionFactor:factor];
+                                              factor *= 0.8;
+                                          }
+                                          
+                                          [service SendImgMessage:currentUserName toUsrName:@"4604041976@chatroom" thumbImgData:[thumb data] midImgData:middata imgData:imgdata imgInfo:nil];
+                                      }];
+                                  }
+                                  
+                                  return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>sent！</p></body></html>"];
+                                  
+                              }];
     
+    [server startWithPort:9000 bonjourName:@""];
+    objc_setAssociatedObject(self, @"gcdwebserver", server, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(void)cb_mmDidLoad{
@@ -148,6 +191,13 @@
             id thumb = [image thumbnailDataForMessage];
             
             NSData *imgdata = [image bestRepresentation];
+            
+            CGFloat factor = 0.8;
+            while ([imgdata length] / 1000 > 800) {
+                imgdata = [image JPEGRepresentationWithCompressionFactor:factor];
+                factor *= 0.8;
+            }
+            
             [service SendImgMessage:currentUserName toUsrName:@"nyatou" thumbImgData:[thumb data] midImgData:imgdata imgData:imgdata imgInfo:nil];
         }];
         
