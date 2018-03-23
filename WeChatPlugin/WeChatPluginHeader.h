@@ -153,6 +153,10 @@ typedef void(^CDUnknownBlockType3)(id arg1, id arg2, id arg3);
 - (void)UntopSessionByUserName:(id)arg1;
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
 - (void)sortSessions;
+
+//group list
+- (NSArray*)GetAllGroupSessionContact;
+
 @end
 
 @interface LogoutCGI : NSTableCellView

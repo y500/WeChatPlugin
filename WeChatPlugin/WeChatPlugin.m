@@ -14,6 +14,7 @@
 #import "MMChatsTableCellView+hook.h"
 #import "GCDWebServer.h"
 #import "GCDWebServerDataResponse.h"
+#import "GCDWebServerURLEncodedFormRequest.h"
 
 #pragma mark - Plugin
 
@@ -109,48 +110,169 @@
     
     
     GCDWebServer *server = [[GCDWebServer alloc] init];
-    [server addDefaultHandlerForMethod:@"GET"
-                              requestClass:[GCDWebServerRequest class]
-                              processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
-                                  
-                                  MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-                                  NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-                                  
-                                  if ([request.URL.path isEqualToString:@"/sendText"]) {
-                                      NSString *content = request.query[@"text"];
-                                      
-                                      if (content.length == 0) {
-                                          return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
-                                      }
-                                      
-                                      [service SendTextMessage:currentUserName toUsrName:@"4604041976@chatroom" msgText:content atUserList:nil];
-                                  }else if ([request.URL.path isEqualToString:@"/sendImg"]) {
-                                      NSString *url = request.query[@"url"];
-                                      MMAvatarService *avService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
-                                      
-                                      [avService getAvatarImageWithUrl:url ?: @"http://p6.qhimg.com/t011254cf99a0443e58.jpg" completion:^(NSImage *image) {
-                                          id thumb = [image thumbnailDataForMessage];
-                                          
-                                          NSData *imgdata = [image bestRepresentation];
-                                          
-                                          NSData *middata = imgdata;
-                                          
-                                          CGFloat factor = 0.8;
-                                          while ([middata length] / 1000 > 800) {
-                                              middata = [image JPEGRepresentationWithCompressionFactor:factor];
-                                              factor *= 0.8;
-                                          }
-                                          
-                                          [service SendImgMessage:currentUserName toUsrName:@"4604041976@chatroom" thumbImgData:[thumb data] midImgData:middata imgData:imgdata imgInfo:nil];
-                                      }];
-                                  }
-                                  
-                                  return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>sent！</p></body></html>"];
-                                  
-                              }];
+    
+    [server addHandlerForMethod:@"GET"
+                              pathRegex:@"/.*"
+                      requestClass:[GCDWebServerRequest class]
+                      processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+                          return [weakSelf responseWithRequest:request];
+                      }];
+    
+    [server addHandlerForMethod:@"POST"
+                              pathRegex:@"/.*"
+                      requestClass:[GCDWebServerURLEncodedFormRequest class]
+                      processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+                          
+                          return [weakSelf responseWithRequest:request];
+                          
+                      }];
+    
     
     [server startWithPort:9000 bonjourName:@""];
     objc_setAssociatedObject(self, @"gcdwebserver", server, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (GCDWebServerDataResponse*)responseWithRequest:(GCDWebServerRequest *)request {
+    MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    
+    if ([request.URL.path isEqualToString:@"/sendText"]) {
+        NSString *content = request.query[@"text"];
+        NSString *userName = request.query[@"user"];
+        
+        if ([request.method isEqualToString:@"POST"]) {
+            content = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"text"];
+            userName = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"user"];
+        }
+        
+        if (content.length == 0 || userName.length == 0) {
+            return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
+        }
+        
+        [service SendTextMessage:currentUserName toUsrName:userName msgText:content atUserList:nil];
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"sent"}];
+    }
+    else if ([request.URL.path isEqualToString:@"/sendImg"]) {
+        NSString *url = request.query[@"url"];
+        NSString *userName = request.query[@"user"];
+        
+        if ([request.method isEqualToString:@"POST"]) {
+            url = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"url"];
+            userName = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"user"];
+        }
+        
+        if (url.length == 0 || userName.length == 0) {
+            return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
+        }
+        
+        MMAvatarService *avService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
+        
+        [avService getAvatarImageWithUrl:url ?: @"http://p6.qhimg.com/t011254cf99a0443e58.jpg" completion:^(NSImage *image) {
+            id thumb = [image thumbnailDataForMessage];
+            
+            NSData *imgdata = [image bestRepresentation];
+            
+            NSData *middata = imgdata;
+            
+            CGFloat factor = 0.8;
+            while ([middata length] / 1000 > 800) {
+                middata = [image JPEGRepresentationWithCompressionFactor:factor];
+                factor *= 0.8;
+            }
+            
+            [service SendImgMessage:currentUserName toUsrName:userName thumbImgData:[thumb data] midImgData:middata imgData:imgdata imgInfo:nil];
+        }];
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"sent"}];
+    }
+    else if ([request.URL.path isEqualToString:@"/groupList"]) {
+        MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+        NSArray *groupContact = [sessionMgr GetAllGroupSessionContact];
+        
+        NSMutableArray *chatRooms = [NSMutableArray arrayWithCapacity:1];
+        
+        for (WCContactData *contact in groupContact) {
+            if ([contact.m_nsUsrName hasSuffix:@"chatroom"]) {
+                NSMutableDictionary *room = [NSMutableDictionary dictionaryWithCapacity:1];
+                [room setObject:contact.m_nsUsrName?:@"" forKey:@"user"];
+                [room setObject:contact.m_nsNickName?:@"" forKey:@"name"];
+                [room setObject:contact.m_nsHeadImgUrl?:@"" forKey:@"avatar"];
+                [chatRooms addObject:room];
+            }
+        }
+        
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200,@"data":chatRooms?:@[],@"info":@"success"}];
+    }
+    else if ([request.path isEqualToString:@"/sendTextToMultiUser"]) {
+        NSString *content = request.query[@"text"];
+        NSString *userNames = request.query[@"users"];
+        
+        if ([request.method isEqualToString:@"POST"]) {
+            content = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"text"];
+            userNames = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"users"];
+        }
+        
+        NSArray *users = [userNames componentsSeparatedByString:@","];
+        
+        if (content.length == 0 || users.count == 0) {
+            return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
+        }
+        
+        for (NSString *user in users) {
+            [service SendTextMessage:currentUserName toUsrName:user msgText:content atUserList:nil];
+            
+            //安全策略
+            double val = ((double)arc4random() / 0x100000000);
+            sleep(val + 1);
+            NSLog(@"xxx:%@", [NSDate date]);
+        }
+        
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"sent"}];
+    }
+    else if ([request.path isEqualToString:@"/sendImgToMultiUser"]) {
+        NSString *url = request.query[@"url"];
+        NSString *userNames = request.query[@"users"];
+        
+        if ([request.method isEqualToString:@"POST"]) {
+            url = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"url"];
+            userNames = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"users"];
+        }
+        
+        NSArray *users = [userNames componentsSeparatedByString:@","];
+        
+        if (url.length == 0 || users.count == 0) {
+            return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>wrong parameter</p></body></html>"];
+        }
+        
+        MMAvatarService *avService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
+        
+        [avService getAvatarImageWithUrl:url ?: @"http://p6.qhimg.com/t011254cf99a0443e58.jpg" completion:^(NSImage *image) {
+            id thumb = [image thumbnailDataForMessage];
+            
+            NSData *imgdata = [image bestRepresentation];
+            
+            NSData *middata = imgdata;
+            
+            CGFloat factor = 0.8;
+            while ([middata length] / 1000 > 800) {
+                middata = [image JPEGRepresentationWithCompressionFactor:factor];
+                factor *= 0.8;
+            }
+            
+            for (NSString *user in users) {
+                [service SendImgMessage:currentUserName toUsrName:user thumbImgData:[thumb data] midImgData:middata imgData:imgdata imgInfo:nil];
+               
+                //安全策略
+                double val = ((double)arc4random() / 0x100000000);
+                sleep(val + 1);
+                NSLog(@"xxx:%@", [NSDate date]);
+            }
+            
+        }];
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"sent"}];
+    }
+    else {
+        return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hi, man!</p></body></html>"];
+    }
 }
 
 -(void)cb_mmDidLoad{

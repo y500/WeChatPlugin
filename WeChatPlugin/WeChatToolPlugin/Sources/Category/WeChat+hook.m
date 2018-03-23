@@ -271,6 +271,8 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
                 if (groupName.length > 0) {
                     [self bindChatRoomID:addMsg.fromUserName.string groupName:groupName];
                 }
+            }else if ([addMsg.content.string rangeOfString:@"showChatRoomID"].location != NSNotFound) {
+                [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:[NSString stringWithFormat:@"群组id：%@", addMsg.fromUserName.string]];
             }
         }
         
@@ -404,6 +406,13 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     }];
     [task resume];
 }
+
+- (void)sendTextMessageToUsrName:(NSString*)toUserName msgText:(NSString*)msg {
+    MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    [service SendTextMessage:currentUserName toUsrName:toUserName msgText:msg atUserList:nil];
+}
+
 /**
  远程控制
  
