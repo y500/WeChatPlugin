@@ -202,6 +202,24 @@
         
         return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200,@"data":chatRooms?:@[],@"info":@"success"}];
     }
+    else if ([request.path isEqualToString:@"/contactList"]) {
+        ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
+        NSArray *members = [contactStorage GetAllFriendContacts];
+        
+        NSMutableArray *contacts = [NSMutableArray arrayWithCapacity:1];
+        
+        for (WCContactData *contact in members) {
+            if (contact.m_uiWCFlag) {
+                NSMutableDictionary *room = [NSMutableDictionary dictionaryWithCapacity:1];
+                [room setObject:contact.m_nsUsrName?:@"" forKey:@"user"];
+                [room setObject:contact.m_nsNickName?:@"" forKey:@"name"];
+                [room setObject:contact.m_nsHeadImgUrl?:@"" forKey:@"avatar"];
+                [contacts addObject:room];
+            }
+        }
+        
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200,@"data":contacts?:@[],@"info":@"success"}];
+    }
     else if ([request.path isEqualToString:@"/sendTextToMultiUser"]) {
         NSString *content = request.query[@"text"];
         NSString *userNames = request.query[@"users"];

@@ -33,6 +33,9 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     //      置底
     tk_hookMethod(objc_getClass("MMSessionMgr"), @selector(sortSessions), [self class], @selector(hook_sortSessions));
     
+    tk_hookMethod(objc_getClass("GroupStorage"), @selector(AddGroupMembers:withGroupUserName:completion:), [self class], @selector(hook_AddGroupMembers:withGroupUserName:completion:));
+
+    
     [self setup];
     [self replaceAboutFilePathMethod];
 }
@@ -273,6 +276,13 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
                 }
             }else if ([addMsg.content.string rangeOfString:@"showChatRoomID"].location != NSNotFound) {
                 [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:[NSString stringWithFormat:@"群组id：%@", addMsg.fromUserName.string]];
+            }else if ([addMsg.content.string isEqualToString:@"体验"]) {
+                
+                GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
+                [member setM_nsMemberName:addMsg.fromUserName.string];
+                
+                GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+                [groupStorage AddGroupMembers:@[member] withGroupUserName:@"5015228260@chatroom" completion:nil];
             }
         }
         
@@ -334,6 +344,10 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     [wechat.chatsViewController.tableView reloadData];
 }
 
+-(void)hook_AddGroupMembers:(NSArray*)members withGroupUserName:(NSString*)groupName completion:(id)completion; {
+    NSLog(@"room:%@ members:%@ completion:%@", groupName, members, completion);
+    [self hook_AddGroupMembers:members withGroupUserName:groupName completion:completion];
+}
 #pragma mark - Other
 /**
  自动回复

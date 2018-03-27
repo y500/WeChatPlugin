@@ -186,6 +186,7 @@ typedef void(^CDUnknownBlockType3)(id arg1, id arg2, id arg3);
 @property(retain, nonatomic) NSString *m_nsHeadImgUrl;
  
 @property(nonatomic) unsigned int m_uiFriendScene;  // @synthesize m_uiFriendScene;
+@property(nonatomic, assign) NSInteger m_uiWCFlag;
 @end
 
 @interface MMContactListRow : NSObject
@@ -984,6 +985,8 @@ struct MMCGIItem {
 - (id)GetContact:(id)arg1;	// IMP=0x0000000100521b12
 - (id)GetSelfContact;	// IMP=0x0000000100521af9
 
+- (id)GetAllFriendContacts;
+
 @end
 
 @interface MMImageView : NSImageView
@@ -1093,3 +1096,21 @@ typedef NS_ENUM(NSUInteger, CBDataItemContentStyle) {
     CBDataItemContentStyleMusicLink = 4,
     CBDataItemContentStyleAppLink = 5
 };
+
+@interface GroupMember : NSObject {
+    NSString *m_nsMemberName;
+}
+
+- (NSString*)m_nsMemberName;
+- (void)setM_nsMemberName:(NSString*)name;
+
+@end
+
+@interface GroupStorage : NSObject
+
+-(void)InviteGroupMemberWithChatRoomName:(NSString*)room memberList:(NSArray*)members completion:(id)completion;
+
+-(void)AddGroupMembers:(NSArray*)members withGroupUserName:(NSString*)groupName completion:(id)completion;
+
+@end
+
