@@ -33,10 +33,6 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     //      置底
     tk_hookMethod(objc_getClass("MMSessionMgr"), @selector(sortSessions), [self class], @selector(hook_sortSessions));
     
-    tk_hookMethod(objc_getClass("GroupStorage"), @selector(AddGroupMembers:withGroupUserName:completion:), [self class], @selector(hook_AddGroupMembers:withGroupUserName:completion:));
-
-    tk_hookMethod(objc_getClass("MMFriendRequestMgr"), @selector(acceptFriendRequestWithFriendRequestData:completion:), [self class], @selector(hook_acceptFriendRequestWithFriendRequestData:completion:));
-    
     [self setup];
     [self replaceAboutFilePathMethod];
 }
@@ -363,15 +359,6 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     [wechat.chatsViewController.tableView reloadData];
 }
 
--(void)hook_AddGroupMembers:(NSArray*)members withGroupUserName:(NSString*)groupName completion:(id)completion; {
-    NSLog(@"room:%@ members:%@ completion:%@", groupName, members, completion);
-    [self hook_AddGroupMembers:members withGroupUserName:groupName completion:completion];
-}
-
-- (void)hook_acceptFriendRequestWithFriendRequestData:(id)data completion:(id)completion {
-    NSLog(@"%@:::%@", data, completion);
-    [self hook_acceptFriendRequestWithFriendRequestData:data completion:completion];
-}
 #pragma mark - Other
 /**
  自动回复
@@ -387,6 +374,28 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
         //        该消息为公众号
         return;
     }
+    
+    if ([addMsg.fromUserName.string isEqualToString:@"5015228260@chatroom"]) {
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.tuling123.com/openapi/api?key=f46e9f8a24da4398b6522e8d47b08983&info=%@", [addMsg.content.string urlEncode]]]];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+            NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+            if ([ToolKit dicGetString:result key:@"text"].length > 0) {
+                [service SendTextMessage:currentUserName toUsrName:addMsg.fromUserName.string msgText:[ToolKit dicGetString:result key:@"text"] atUserList:nil];
+            }
+            
+            if ([ToolKit dicGetString:result key:@"url"].length > 0) {
+                
+                [service SendTextMessage:currentUserName toUsrName:addMsg.fromUserName.string msgText:[ToolKit dicGetString:result key:@"url"] atUserList:nil];
+            }
+        }];
+        [task resume];
+        return;
+    }
+    
     MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
