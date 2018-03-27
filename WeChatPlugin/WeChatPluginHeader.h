@@ -1114,3 +1114,48 @@ typedef NS_ENUM(NSUInteger, CBDataItemContentStyle) {
 
 @end
 
+@interface MMFriendRequestMgr : NSObject
+
+- (void)acceptFriendRequestWithFriendRequestData:(id)data completion:(id)completion;
+
+@end
+
+@interface MMFriendRequestData : NSObject
+{
+    BOOL hasReadRequest;
+    unsigned int scene;
+    unsigned int opCode;
+    NSString *userName;
+    NSString *nickName;
+    NSMutableArray *requestContents;
+    NSString *region;
+    NSString *userSignature;
+//    WCPushContactData *contact;
+    NSString *encryptuserName;
+    NSString *ticket;
+}
+
++ (void)initialize;
++ (void)_initPBTableOfMMFriendRequestData;
+@property(nonatomic) unsigned int opCode; // @synthesize opCode;
+@property(nonatomic) unsigned int scene; // @synthesize scene;
+@property(retain, nonatomic) NSString *ticket; // @synthesize ticket;
+@property(retain, nonatomic) NSString *encryptuserName; // @synthesize encryptuserName;
+//@property(retain, nonatomic) WCPushContactData *contact; // @synthesize contact;
+@property(nonatomic) BOOL hasReadRequest; // @synthesize hasReadRequest;
+@property(retain, nonatomic) NSString *userSignature; // @synthesize userSignature;
+@property(retain, nonatomic) NSString *region; // @synthesize region;
+@property(retain, nonatomic) NSMutableArray *requestContents; // @synthesize requestContents;
+@property(retain, nonatomic) NSString *nickName; // @synthesize nickName;
+@property(retain, nonatomic) NSString *userName; // @synthesize userName;
+
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
+@end
+
+

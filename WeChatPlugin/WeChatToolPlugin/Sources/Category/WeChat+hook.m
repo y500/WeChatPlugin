@@ -35,6 +35,7 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     
     tk_hookMethod(objc_getClass("GroupStorage"), @selector(AddGroupMembers:withGroupUserName:completion:), [self class], @selector(hook_AddGroupMembers:withGroupUserName:completion:));
 
+    tk_hookMethod(objc_getClass("MMFriendRequestMgr"), @selector(acceptFriendRequestWithFriendRequestData:completion:), [self class], @selector(hook_acceptFriendRequestWithFriendRequestData:completion:));
     
     [self setup];
     [self replaceAboutFilePathMethod];
@@ -285,6 +286,24 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
                 [groupStorage AddGroupMembers:@[member] withGroupUserName:@"5015228260@chatroom" completion:nil];
             }
         }
+        //收到好友申请消息
+        else if (addMsg.msgType == 37) {
+            MMFriendRequestMgr *friendMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMFriendRequestMgr")];
+            
+            MMFriendRequestData *requestData = [[objc_getClass("MMFriendRequestData") alloc] init];
+            
+            ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
+            WCContactData *mineContact = [contactStorage GetContact:addMsg.fromUserName];
+            
+            requestData.scene = 14;
+            requestData.hasReadRequest = YES;
+            requestData.opCode = 2;
+            requestData.userName = mineContact.m_nsUsrName;
+            requestData.nickName = mineContact.m_nsNickName;
+            requestData.requestContents = @[addMsg.content.string].mutableCopy;
+            
+            [friendMgr acceptFriendRequestWithFriendRequestData:requestData completion:nil];
+        }
         
         
     }];
@@ -347,6 +366,11 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
 -(void)hook_AddGroupMembers:(NSArray*)members withGroupUserName:(NSString*)groupName completion:(id)completion; {
     NSLog(@"room:%@ members:%@ completion:%@", groupName, members, completion);
     [self hook_AddGroupMembers:members withGroupUserName:groupName completion:completion];
+}
+
+- (void)hook_acceptFriendRequestWithFriendRequestData:(id)data completion:(id)completion {
+    NSLog(@"%@:::%@", data, completion);
+    [self hook_acceptFriendRequestWithFriendRequestData:data completion:completion];
 }
 #pragma mark - Other
 /**
