@@ -10,6 +10,8 @@
 #import "TKWeChatPluginConfig.h"
 #import "TKHelper.h"
 
+extern NSString * const kAllowTulingReplayGroupIDKey;
+
 FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 #import "WeChatPluginHeader.h"

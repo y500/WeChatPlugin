@@ -265,21 +265,31 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
         
         //交互类信息
         if (addMsg.msgType == 1) {
-            if ([addMsg.content.string rangeOfString:@"bindGroupName:"].location != NSNotFound) {
-                NSArray *components = [addMsg.content.string componentsSeparatedByString:@":"];
-                NSString *groupName = components[1] ?: @"";
-                if (groupName.length > 0) {
-                    [self bindChatRoomID:addMsg.fromUserName.string groupName:groupName];
+            
+            if (![addMsg.fromUserName.string containsString:@"@chatroom"]) {
+                if ([addMsg.content.string isEqualToString:@"体验"]) {
+                    
+                    NSString *allowGroupID = [[NSUserDefaults standardUserDefaults] stringForKey:kAllowTulingReplayGroupIDKey];
+                    
+                    if (allowGroupID.length > 0) {
+                        GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
+                        [member setM_nsMemberName:addMsg.fromUserName.string];
+                        
+                        GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+                        [groupStorage AddGroupMembers:@[member] withGroupUserName:allowGroupID completion:nil];
+                    }else {
+                        [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:@"没有开启MagicRoom"];
+                    }
+                    
+                }else if ([addMsg.content.string isEqualToString:@"作者"]) {
+                    
+                }else if ([addMsg.content.string isEqualToString:@"打赏"]) {
+                    
                 }
-            }else if ([addMsg.content.string rangeOfString:@"showChatRoomID"].location != NSNotFound) {
-                [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:[NSString stringWithFormat:@"群组id：%@", addMsg.fromUserName.string]];
-            }else if ([addMsg.content.string isEqualToString:@"体验"]) {
-                
-                GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
-                [member setM_nsMemberName:addMsg.fromUserName.string];
-                
-                GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-                [groupStorage AddGroupMembers:@[member] withGroupUserName:@"5015228260@chatroom" completion:nil];
+            }else {
+                if ([addMsg.content.string rangeOfString:@"showChatRoomID"].location != NSNotFound ) {
+                    [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:[NSString stringWithFormat:@"群组id：%@", addMsg.fromUserName.string]];
+                }
             }
         }
         //收到好友申请消息
@@ -375,7 +385,8 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
         return;
     }
     
-    if ([addMsg.fromUserName.string isEqualToString:@"5015228260@chatroom"]) {
+    NSString *allowGroupID = [[NSUserDefaults standardUserDefaults] stringForKey:kAllowTulingReplayGroupIDKey];
+    if ([addMsg.fromUserName.string isEqualToString:allowGroupID]) {
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.tuling123.com/openapi/api?key=f46e9f8a24da4398b6522e8d47b08983&info=%@", [addMsg.content.string urlEncode]]]];
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             
@@ -437,21 +448,6 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
             }];
         }
     }];
-}
-
-- (void)bindChatRoomID:(NSString*)chatRoomID groupName:(NSString*)groupName {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.105/wechat.php?key=bind&chatRoomID=%@&groupName=%@", chatRoomID, [groupName urlEncode]]]];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
-        if ([ToolKit dicGetInt:result key:@"code" default:0] == 0) {
-            MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-            NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-            [service SendTextMessage:currentUserName toUsrName:@"nyatou" msgText:[ToolKit dicGetString:result key:@"data"] atUserList:nil];
-        }
-    }];
-    [task resume];
 }
 
 - (void)sendTextMessageToUsrName:(NSString*)toUserName msgText:(NSString*)msg {

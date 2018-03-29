@@ -10,11 +10,5 @@ Podfile.lock
 firbuild.sh
 
 
-ElevatorMaintenance.app.dSYM.zip
-ElevatorMaintenance.ipa
-Gemfile
-Gemfile.lock
-Preview.html
-fastlane/*
-fir_build/*
-ElevatorMaintenance.xcworkspace/xcuserdata/*
+*/xcuserdata/*
+*/xcuserdata/*/*

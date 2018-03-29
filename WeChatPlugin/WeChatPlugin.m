@@ -18,6 +18,8 @@
 
 #pragma mark - Plugin
 
+NSString * const kAllowTulingReplayGroupIDKey = @"kAllowTulingReplayGroupIDKey";
+
 @implementation NSBundle (WeChatPlugin)
 
 + (instancetype)pluginBundle {
@@ -287,6 +289,27 @@
             
         }];
         return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"sent"}];
+    }
+    else if ([request.path isEqualToString:@"/enableMagicGroup"]) {
+        NSString *chatRoomID = request.query[@"room"];
+        
+        if ([request.method isEqualToString:@"POST"]) {
+            chatRoomID = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"room"];
+        }
+        if (chatRoomID.length > 0) {
+            [[NSUserDefaults standardUserDefaults] setObject:chatRoomID forKey:kAllowTulingReplayGroupIDKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
+        }else {
+            return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@400, @"info":@"wrong parameter"}];
+        }
+        
+    }
+    else if ([request.path isEqualToString:@"/disableMagicGroup"]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAllowTulingReplayGroupIDKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
     }
     else {
         return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hi, man!</p></body></html>"];
