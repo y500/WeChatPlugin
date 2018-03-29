@@ -18,6 +18,7 @@
         imageView.layer.backgroundColor = [NSColor colorWithWhite:0.9 alpha:1.0].CGColor;
         imageView.layer.borderColor = [NSColor whiteColor].CGColor;
         imageView.layer.borderWidth = 1;
+        imageView.layer.contentsGravity = kCAGravityResizeAspectFill;
     }
 }
 

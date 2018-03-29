@@ -2,9 +2,16 @@
 //  WeChatPlugin.h
 //  WeChatPlugin
 //
-//  Created by nato on 2017/1/22.
-//  Copyright (c) 2017年 github:natoto. All rights reserved.
+//  Created by nato on 2017/1/11.
+//  Copyright © 2017年 github:natototo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+#import "TKWeChatPluginConfig.h"
+#import "TKHelper.h"
 
+extern NSString * const kAllowTulingReplayGroupIDKey;
+
+FOUNDATION_EXPORT double WeChatPluginVersionNumber;
+FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
+#import "WeChatPluginHeader.h"

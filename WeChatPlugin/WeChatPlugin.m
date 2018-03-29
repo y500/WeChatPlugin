@@ -33,7 +33,7 @@ NSString * const kAllowTulingReplayGroupIDKey = @"kAllowTulingReplayGroupIDKey";
 #pragma mark - MMLogger
 
 + (void)cb_logWithMMLogLevel:(int)arg1 module:(const char *)arg2 file:(const char *)arg3 line:(int)arg4 func:(const char *)arg5 message:(id)arg6 {
-    NSLog(@"[%s] %s %s %@", arg2, arg3, arg5, arg6);
+//    NSLog(@"[%s] %s %s %@", arg2, arg3, arg5, arg6);
 }
 
 #pragma mark - MMCGIConfig

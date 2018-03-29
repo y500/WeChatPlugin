@@ -58,7 +58,6 @@
 		E8DEBF53205B70C700D1BE84 /* ToolKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E8DEBF51205B70C700D1BE84 /* ToolKit.h */; };
 		E8DEBF54205B70C700D1BE84 /* ToolKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DEBF52205B70C700D1BE84 /* ToolKit.m */; };
 		F8348B561FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */; };
-		F8348B581FBEB9F1006A4FA3 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = F8348B1E1FBEB9F1006A4FA3 /* WeChatPlugin.h */; };
 		F8348B591FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8348B221FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h */; };
 		F8348B5A1FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8348B231FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib */; };
 		F8348B5B1FBEB9F1006A4FA3 /* TKAutoReplyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8348B241FBEB9F1006A4FA3 /* TKAutoReplyWindowController.m */; };
@@ -172,7 +171,6 @@
 		E8DEBF52205B70C700D1BE84 /* ToolKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolKit.m; sourceTree = "<group>"; };
 		F5761F84B0D824761E85E37B /* Pods-WeChatPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatPlugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatPlugin/Pods-WeChatPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
-		F8348B1E1FBEB9F1006A4FA3 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
 		F8348B221FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyWindowController.h; sourceTree = "<group>"; };
 		F8348B231FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAutoReplyWindowController.xib; sourceTree = "<group>"; };
 		F8348B241FBEB9F1006A4FA3 /* TKAutoReplyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyWindowController.m; sourceTree = "<group>"; };
@@ -268,15 +266,19 @@
 		803DAFC51E853D3F00ADCC86 /* WeChatPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				F8348B1B1FBEB9F1006A4FA3 /* WeChatToolPlugin */,
+				803DAFCD1E853D3F00ADCC86 /* WeChatPluginHeader.h */,
 				803DAFC91E853D3F00ADCC86 /* WeChatPlugin.h */,
 				803DAFCB1E853D3F00ADCC86 /* WeChatPlugin.m */,
-				F8B637F31E8A571B00ACF4C1 /* MMPreviewViewController.h */,
-				F8B637F41E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h */,
-				803DAFCD1E853D3F00ADCC86 /* WeChatPluginHeader.h */,
+				F8348B2B1FBEB9F1006A4FA3 /* WeChat+hook.h */,
+				F8348B2C1FBEB9F1006A4FA3 /* WeChat+hook.m */,
+				F8348B301FBEB9F1006A4FA3 /* TKWeChatPluginConfig.h */,
+				F8348B2F1FBEB9F1006A4FA3 /* TKWeChatPluginConfig.m */,
+				E86D5358206D16B100AD847C /* Common */,
 				80E551F11E8561F600EB428F /* Utility */,
 				80E551EC1E85613300EB428F /* Category */,
-				80E551931E853F9000EB428F /* Status */,
+				E86D5355206D157E00AD847C /* SortSession */,
+				E86D5350206D145100AD847C /* AutoReply */,
+				E86D534D206D12D700AD847C /* RemoteControl */,
 				80E551DC1E8559B400EB428F /* TimeLine */,
 				803DAFC61E853D3F00ADCC86 /* Supporting Files */,
 			);
@@ -292,34 +294,6 @@
 				803DAFD11E853D3F00ADCC86 /* Podfile */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		80E551931E853F9000EB428F /* Status */ = {
-			isa = PBXGroup;
-			children = (
-				80E551BB1E853FB200EB428F /* Model */,
-				80E551BA1E853FA500EB428F /* View */,
-			);
-			name = Status;
-			sourceTree = "<group>";
-		};
-		80E551BA1E853FA500EB428F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				80E551961E853FA100EB428F /* MMStatusCell.h */,
-				80E551971E853FA100EB428F /* MMStatusCell.m */,
-				80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */,
-				80E551A51E853FA100EB428F /* MMStatusMediaView.h */,
-				80E551A61E853FA100EB428F /* MMStatusMediaView.m */,
-				80E5519B1E853FA100EB428F /* MMStatusImageMediaView.h */,
-				80E5519C1E853FA100EB428F /* MMStatusImageMediaView.m */,
-				80E551A01E853FA100EB428F /* MMStatusLinkMediaView.h */,
-				80E551A11E853FA100EB428F /* MMStatusLinkMediaView.m */,
-				80E551981E853FA100EB428F /* MMStatusCell.xib */,
-				80E5519D1E853FA100EB428F /* MMStatusImageMediaView.xib */,
-				80E551A21E853FA100EB428F /* MMStatusLinkMediaView.xib */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		80E551BB1E853FB200EB428F /* Model */ = {
@@ -342,25 +316,40 @@
 			children = (
 				80E551E51E855A3F00EB428F /* Mgr */,
 				80E551E41E855A0C00EB428F /* View */,
-				80E551E31E855A0400EB428F /* View Controller */,
+				80E551BB1E853FB200EB428F /* Model */,
+				80E551E31E855A0400EB428F /* Controller */,
 			);
 			name = TimeLine;
 			sourceTree = "<group>";
 		};
-		80E551E31E855A0400EB428F /* View Controller */ = {
+		80E551E31E855A0400EB428F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */,
+				F8B637F31E8A571B00ACF4C1 /* MMPreviewViewController.h */,
+				F8B637F41E8A571B00ACF4C1 /* MMPreviewViewPageInfo.h */,
 				80E551DD1E8559E700EB428F /* MMTimeLineViewController.h */,
 				80E551DE1E8559E700EB428F /* MMTimeLineViewController.m */,
+				80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */,
 			);
-			name = "View Controller";
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		80E551E41E855A0C00EB428F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				80E551DF1E8559E700EB428F /* MMTimeLineViewController.xib */,
+				80E551961E853FA100EB428F /* MMStatusCell.h */,
+				80E551971E853FA100EB428F /* MMStatusCell.m */,
+				80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */,
+				80E551A51E853FA100EB428F /* MMStatusMediaView.h */,
+				80E551A61E853FA100EB428F /* MMStatusMediaView.m */,
+				80E5519B1E853FA100EB428F /* MMStatusImageMediaView.h */,
+				80E5519C1E853FA100EB428F /* MMStatusImageMediaView.m */,
+				80E551A01E853FA100EB428F /* MMStatusLinkMediaView.h */,
+				80E551A11E853FA100EB428F /* MMStatusLinkMediaView.m */,
+				80E551981E853FA100EB428F /* MMStatusCell.xib */,
+				80E5519D1E853FA100EB428F /* MMStatusImageMediaView.xib */,
+				80E551A21E853FA100EB428F /* MMStatusLinkMediaView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -378,11 +367,18 @@
 		80E551EC1E85613300EB428F /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				F843D9D61FCE923600C284B4 /* NSObject-ObjectMap */,
 				80E551ED1E85616200EB428F /* NSDate+StatusTimeDescription.h */,
 				80E551EE1E85616200EB428F /* NSDate+StatusTimeDescription.m */,
 				80E551F21E85620C00EB428F /* NSString+XMLDictionary.h */,
 				80E551F31E85620C00EB428F /* NSString+XMLDictionary.m */,
+				F843D9D71FCE923600C284B4 /* NSObject+ObjectMap.m */,
+				F843D9D81FCE923600C284B4 /* NSObject+ObjectMap.h */,
+				F8348B441FBEB9F1006A4FA3 /* NSButton+Action.h */,
+				F8348B411FBEB9F1006A4FA3 /* NSButton+Action.m */,
+				F8348B451FBEB9F1006A4FA3 /* NSView+Action.h */,
+				F8348B431FBEB9F1006A4FA3 /* NSView+Action.m */,
+				F8348B421FBEB9F1006A4FA3 /* NSTextField+Action.h */,
+				F8348B461FBEB9F1006A4FA3 /* NSTextField+Action.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -390,6 +386,10 @@
 		80E551F11E8561F600EB428F /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F8348B321FBEB9F1006A4FA3 /* TKHelper.h */,
+				F8348B341FBEB9F1006A4FA3 /* TKHelper.m */,
+				E8DEBF51205B70C700D1BE84 /* ToolKit.h */,
+				E8DEBF52205B70C700D1BE84 /* ToolKit.m */,
 				80E551F61E85621400EB428F /* XMLReader.h */,
 				80E551F71E85621400EB428F /* XMLReader.m */,
 			);
@@ -421,175 +421,124 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F8348B1B1FBEB9F1006A4FA3 /* WeChatToolPlugin */ = {
+		E86D534D206D12D700AD847C /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
+				E86D5354206D14C000AD847C /* View */,
+				E86D534F206D13CC00AD847C /* Model */,
+				E86D534E206D135000AD847C /* Controller */,
 				F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */,
-				F8348B1E1FBEB9F1006A4FA3 /* WeChatPlugin.h */,
-				F8348B1F1FBEB9F1006A4FA3 /* Sources */,
 				F8348B551FBEB9F1006A4FA3 /* TKRemoteControlCommands.plist */,
 			);
-			path = WeChatToolPlugin;
+			name = RemoteControl;
 			sourceTree = "<group>";
 		};
-		F8348B1F1FBEB9F1006A4FA3 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B201FBEB9F1006A4FA3 /* WindowControllers */,
-				F8348B291FBEB9F1006A4FA3 /* Category */,
-				F8348B2E1FBEB9F1006A4FA3 /* Config */,
-				F8348B311FBEB9F1006A4FA3 /* Utils */,
-				F8348B361FBEB9F1006A4FA3 /* Models */,
-				F8348B3F1FBEB9F1006A4FA3 /* Common */,
-				F8348B491FBEB9F1006A4FA3 /* Controllers */,
-				F8348B4C1FBEB9F1006A4FA3 /* Views */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		F8348B201FBEB9F1006A4FA3 /* WindowControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B211FBEB9F1006A4FA3 /* AutoReply */,
-				F8348B251FBEB9F1006A4FA3 /* RemoteControl */,
-			);
-			path = WindowControllers;
-			sourceTree = "<group>";
-		};
-		F8348B211FBEB9F1006A4FA3 /* AutoReply */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B221FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h */,
-				F8348B231FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib */,
-				F8348B241FBEB9F1006A4FA3 /* TKAutoReplyWindowController.m */,
-			);
-			path = AutoReply;
-			sourceTree = "<group>";
-		};
-		F8348B251FBEB9F1006A4FA3 /* RemoteControl */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B261FBEB9F1006A4FA3 /* TKRemoteControlWindowController.xib */,
-				F8348B271FBEB9F1006A4FA3 /* TKRemoteControlWindowController.m */,
-				F8348B281FBEB9F1006A4FA3 /* TKRemoteControlWindowController.h */,
-			);
-			path = RemoteControl;
-			sourceTree = "<group>";
-		};
-		F8348B291FBEB9F1006A4FA3 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B2A1FBEB9F1006A4FA3 /* MMChatsTableCellView+hook.h */,
-				F8348B2B1FBEB9F1006A4FA3 /* WeChat+hook.h */,
-				F8348B2C1FBEB9F1006A4FA3 /* WeChat+hook.m */,
-				F8348B2D1FBEB9F1006A4FA3 /* MMChatsTableCellView+hook.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		F8348B2E1FBEB9F1006A4FA3 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B2F1FBEB9F1006A4FA3 /* TKWeChatPluginConfig.m */,
-				F8348B301FBEB9F1006A4FA3 /* TKWeChatPluginConfig.h */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		F8348B311FBEB9F1006A4FA3 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B321FBEB9F1006A4FA3 /* TKHelper.h */,
-				F8348B341FBEB9F1006A4FA3 /* TKHelper.m */,
-				E8DEBF51205B70C700D1BE84 /* ToolKit.h */,
-				E8DEBF52205B70C700D1BE84 /* ToolKit.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		F8348B361FBEB9F1006A4FA3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B371FBEB9F1006A4FA3 /* TKIgnoreSessonModel.h */,
-				F8348B381FBEB9F1006A4FA3 /* TKRemoteControlModel.h */,
-				F8348B391FBEB9F1006A4FA3 /* TKAutoReplyModel.m */,
-				F8348B3A1FBEB9F1006A4FA3 /* TKBaseModel.m */,
-				F8348B3B1FBEB9F1006A4FA3 /* TKIgnoreSessonModel.m */,
-				F8348B3C1FBEB9F1006A4FA3 /* TKRemoteControlModel.m */,
-				F8348B3D1FBEB9F1006A4FA3 /* TKAutoReplyModel.h */,
-				F8348B3E1FBEB9F1006A4FA3 /* TKBaseModel.h */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		F8348B3F1FBEB9F1006A4FA3 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B401FBEB9F1006A4FA3 /* Category */,
-				F8348B471FBEB9F1006A4FA3 /* Color.h */,
-				F8348B481FBEB9F1006A4FA3 /* TKPrefixHeader.pch */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		F8348B401FBEB9F1006A4FA3 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				F8348B411FBEB9F1006A4FA3 /* NSButton+Action.m */,
-				F8348B421FBEB9F1006A4FA3 /* NSTextField+Action.h */,
-				F8348B431FBEB9F1006A4FA3 /* NSView+Action.m */,
-				F8348B441FBEB9F1006A4FA3 /* NSButton+Action.h */,
-				F8348B451FBEB9F1006A4FA3 /* NSView+Action.h */,
-				F8348B461FBEB9F1006A4FA3 /* NSTextField+Action.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		F8348B491FBEB9F1006A4FA3 /* Controllers */ = {
+		E86D534E206D135000AD847C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				F8348B4A1FBEB9F1006A4FA3 /* TKRemoteControlController.h */,
 				F8348B4B1FBEB9F1006A4FA3 /* TKRemoteControlController.m */,
+				F8348B281FBEB9F1006A4FA3 /* TKRemoteControlWindowController.h */,
+				F8348B271FBEB9F1006A4FA3 /* TKRemoteControlWindowController.m */,
+				F8348B261FBEB9F1006A4FA3 /* TKRemoteControlWindowController.xib */,
 			);
-			path = Controllers;
+			name = Controller;
 			sourceTree = "<group>";
 		};
-		F8348B4C1FBEB9F1006A4FA3 /* Views */ = {
+		E86D534F206D13CC00AD847C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F8348B4D1FBEB9F1006A4FA3 /* AutoReply */,
-				F8348B521FBEB9F1006A4FA3 /* RemoteControl */,
+				F8348B381FBEB9F1006A4FA3 /* TKRemoteControlModel.h */,
+				F8348B3C1FBEB9F1006A4FA3 /* TKRemoteControlModel.m */,
 			);
-			path = Views;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		F8348B4D1FBEB9F1006A4FA3 /* AutoReply */ = {
+		E86D5350206D145100AD847C /* AutoReply */ = {
 			isa = PBXGroup;
 			children = (
-				F8348B4E1FBEB9F1006A4FA3 /* TKAutoReplyContentView.m */,
-				F8348B4F1FBEB9F1006A4FA3 /* TKAutoReplyCell.h */,
+				E86D5353206D147700AD847C /* View */,
+				E86D5352206D146F00AD847C /* Model */,
+				E86D5351206D146400AD847C /* Controller */,
+			);
+			name = AutoReply;
+			sourceTree = "<group>";
+		};
+		E86D5351206D146400AD847C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F8348B221FBEB9F1006A4FA3 /* TKAutoReplyWindowController.h */,
+				F8348B241FBEB9F1006A4FA3 /* TKAutoReplyWindowController.m */,
+				F8348B231FBEB9F1006A4FA3 /* TKAutoReplyWindowController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E86D5352206D146F00AD847C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8348B3D1FBEB9F1006A4FA3 /* TKAutoReplyModel.h */,
+				F8348B391FBEB9F1006A4FA3 /* TKAutoReplyModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E86D5353206D147700AD847C /* View */ = {
+			isa = PBXGroup;
+			children = (
 				F8348B501FBEB9F1006A4FA3 /* TKAutoReplyContentView.h */,
+				F8348B4E1FBEB9F1006A4FA3 /* TKAutoReplyContentView.m */,
 				F8348B511FBEB9F1006A4FA3 /* TKAutoReplyCell.m */,
+				F8348B4F1FBEB9F1006A4FA3 /* TKAutoReplyCell.h */,
 			);
-			path = AutoReply;
+			name = View;
 			sourceTree = "<group>";
 		};
-		F8348B521FBEB9F1006A4FA3 /* RemoteControl */ = {
+		E86D5354206D14C000AD847C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F8348B531FBEB9F1006A4FA3 /* TKRemoteControlCell.h */,
 				F8348B541FBEB9F1006A4FA3 /* TKRemoteControlCell.m */,
 			);
-			path = RemoteControl;
+			name = View;
 			sourceTree = "<group>";
 		};
-		F843D9D61FCE923600C284B4 /* NSObject-ObjectMap */ = {
+		E86D5355206D157E00AD847C /* SortSession */ = {
 			isa = PBXGroup;
 			children = (
-				F843D9D71FCE923600C284B4 /* NSObject+ObjectMap.m */,
-				F843D9D81FCE923600C284B4 /* NSObject+ObjectMap.h */,
+				E86D5357206D165D00AD847C /* View */,
+				E86D5356206D165200AD847C /* Model */,
 			);
-			path = "NSObject-ObjectMap";
+			name = SortSession;
+			sourceTree = "<group>";
+		};
+		E86D5356206D165200AD847C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8348B371FBEB9F1006A4FA3 /* TKIgnoreSessonModel.h */,
+				F8348B3B1FBEB9F1006A4FA3 /* TKIgnoreSessonModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E86D5357206D165D00AD847C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8348B2A1FBEB9F1006A4FA3 /* MMChatsTableCellView+hook.h */,
+				F8348B2D1FBEB9F1006A4FA3 /* MMChatsTableCellView+hook.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E86D5358206D16B100AD847C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F8348B471FBEB9F1006A4FA3 /* Color.h */,
+				F8348B481FBEB9F1006A4FA3 /* TKPrefixHeader.pch */,
+				F8348B3E1FBEB9F1006A4FA3 /* TKBaseModel.h */,
+				F8348B3A1FBEB9F1006A4FA3 /* TKBaseModel.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,7 +560,6 @@
 				803DAFCE1E853D3F00ADCC86 /* WeChatPluginHeader.h in Headers */,
 				80E551B81E853FA100EB428F /* MMStatusMediaView.h in Headers */,
 				F8348B5E1FBEB9F1006A4FA3 /* TKRemoteControlWindowController.h in Headers */,
-				F8348B581FBEB9F1006A4FA3 /* WeChatPlugin.h in Headers */,
 				F8348B651FBEB9F1006A4FA3 /* TKHelper.h in Headers */,
 				80E551EF1E85616200EB428F /* NSDate+StatusTimeDescription.h in Headers */,
 				F8348B7D1FBEB9F1006A4FA3 /* TKAutoReplyContentView.h in Headers */,
