@@ -55,6 +55,10 @@
 		80E5520E1E860B9600EB428F /* time_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E552041E860B9600EB428F /* time_icon@2x.png */; };
 		80E552101E860BDC00EB428F /* MMTimeLineMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */; };
 		80E552121E860BDC00EB428F /* MMStatusCellDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */; };
+		E86D5363206E65BA00AD847C /* WeChatHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E86D5361206E65BA00AD847C /* WeChatHelper.h */; };
+		E86D5364206E65BA00AD847C /* WeChatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E86D5362206E65BA00AD847C /* WeChatHelper.m */; };
+		E86D5368206E6A2C00AD847C /* MMWebServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E86D5366206E6A2C00AD847C /* MMWebServer.h */; };
+		E86D5369206E6A2C00AD847C /* MMWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E86D5367206E6A2C00AD847C /* MMWebServer.m */; };
 		E8DEBF53205B70C700D1BE84 /* ToolKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E8DEBF51205B70C700D1BE84 /* ToolKit.h */; };
 		E8DEBF54205B70C700D1BE84 /* ToolKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DEBF52205B70C700D1BE84 /* ToolKit.m */; };
 		F8348B561FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = F8348B1C1FBEB9F1006A4FA3 /* TKRemoteControlScript.scpt */; };
@@ -167,6 +171,10 @@
 		80E552041E860B9600EB428F /* time_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_icon@2x.png"; sourceTree = "<group>"; };
 		80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTimeLineMainViewController.h; sourceTree = "<group>"; };
 		80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusCellDelegate.h; sourceTree = "<group>"; };
+		E86D5361206E65BA00AD847C /* WeChatHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatHelper.h; sourceTree = "<group>"; };
+		E86D5362206E65BA00AD847C /* WeChatHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatHelper.m; sourceTree = "<group>"; };
+		E86D5366206E6A2C00AD847C /* MMWebServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebServer.h; sourceTree = "<group>"; };
+		E86D5367206E6A2C00AD847C /* MMWebServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWebServer.m; sourceTree = "<group>"; };
 		E8DEBF51205B70C700D1BE84 /* ToolKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolKit.h; sourceTree = "<group>"; };
 		E8DEBF52205B70C700D1BE84 /* ToolKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolKit.m; sourceTree = "<group>"; };
 		F5761F84B0D824761E85E37B /* Pods-WeChatPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatPlugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatPlugin/Pods-WeChatPlugin.release.xcconfig"; sourceTree = "<group>"; };
@@ -276,6 +284,7 @@
 				E86D5358206D16B100AD847C /* Common */,
 				80E551F11E8561F600EB428F /* Utility */,
 				80E551EC1E85613300EB428F /* Category */,
+				E86D5365206E69F800AD847C /* WebServer */,
 				E86D5355206D157E00AD847C /* SortSession */,
 				E86D5350206D145100AD847C /* AutoReply */,
 				E86D534D206D12D700AD847C /* RemoteControl */,
@@ -537,8 +546,19 @@
 				F8348B481FBEB9F1006A4FA3 /* TKPrefixHeader.pch */,
 				F8348B3E1FBEB9F1006A4FA3 /* TKBaseModel.h */,
 				F8348B3A1FBEB9F1006A4FA3 /* TKBaseModel.m */,
+				E86D5361206E65BA00AD847C /* WeChatHelper.h */,
+				E86D5362206E65BA00AD847C /* WeChatHelper.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		E86D5365206E69F800AD847C /* WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				E86D5366206E6A2C00AD847C /* MMWebServer.h */,
+				E86D5367206E6A2C00AD847C /* MMWebServer.m */,
+			);
+			name = WebServer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,6 +568,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86D5368206E6A2C00AD847C /* MMWebServer.h in Headers */,
 				80E551F81E85621400EB428F /* XMLReader.h in Headers */,
 				80E551E01E8559E700EB428F /* MMTimeLineViewController.h in Headers */,
 				F8348B691FBEB9F1006A4FA3 /* TKIgnoreSessonModel.h in Headers */,
@@ -565,6 +586,7 @@
 				F8348B7D1FBEB9F1006A4FA3 /* TKAutoReplyContentView.h in Headers */,
 				F8348B791FBEB9F1006A4FA3 /* TKRemoteControlController.h in Headers */,
 				F8348B7F1FBEB9F1006A4FA3 /* TKRemoteControlCell.h in Headers */,
+				E86D5363206E65BA00AD847C /* WeChatHelper.h in Headers */,
 				803DAFCA1E853D3F00ADCC86 /* WeChatPlugin.h in Headers */,
 				80E551B11E853FA100EB428F /* MMStatusLinkMediaObject.h in Headers */,
 				80E551A91E853FA100EB428F /* MMStatusCell.h in Headers */,
@@ -756,6 +778,7 @@
 			files = (
 				803DAFCC1E853D3F00ADCC86 /* WeChatPlugin.m in Sources */,
 				80E551AD1E853FA100EB428F /* MMStatusImageMediaObject.m in Sources */,
+				E86D5369206E6A2C00AD847C /* MMWebServer.m in Sources */,
 				F8348B801FBEB9F1006A4FA3 /* TKRemoteControlCell.m in Sources */,
 				80E551E91E855A4F00EB428F /* MMTimeLineMgr.m in Sources */,
 				F8348B6C1FBEB9F1006A4FA3 /* TKBaseModel.m in Sources */,
@@ -767,6 +790,7 @@
 				F8348B731FBEB9F1006A4FA3 /* NSView+Action.m in Sources */,
 				F8348B6D1FBEB9F1006A4FA3 /* TKIgnoreSessonModel.m in Sources */,
 				F8348B7B1FBEB9F1006A4FA3 /* TKAutoReplyContentView.m in Sources */,
+				E86D5364206E65BA00AD847C /* WeChatHelper.m in Sources */,
 				80E551F91E85621400EB428F /* XMLReader.m in Sources */,
 				F8348B5D1FBEB9F1006A4FA3 /* TKRemoteControlWindowController.m in Sources */,
 				F8348B7A1FBEB9F1006A4FA3 /* TKRemoteControlController.m in Sources */,
