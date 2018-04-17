@@ -20,6 +20,9 @@
 @property (nonatomic, copy) NSMutableArray *ignoreSessionModels;        /**<    聊天置底的数组    */
 @property (nonatomic, copy) NSMutableArray *selectSessions;             /**<    已经选中的会话    */
 
+@property (nonatomic, assign) BOOL enableTulingSingle;
+@property (nonatomic, assign) BOOL enabelTulingGroup;
+
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

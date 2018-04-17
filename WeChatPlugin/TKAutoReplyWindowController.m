@@ -22,6 +22,9 @@
 @property (nonatomic, strong) NSMutableArray *autoReplyModels;
 @property (nonatomic, assign) NSInteger lastSelectIndex;
 
+@property (nonatomic, strong) NSButton *enableTulingBotSingle;
+@property (nonatomic, strong) NSButton *enableTulingBotGroup;
+
 @end
 
 @implementation TKAutoReplyWindowController
@@ -46,10 +49,35 @@
 }
 
 - (void)initSubviews {
+    
+    self.enableTulingBotSingle = ({
+        NSButton *btn = [NSButton tk_checkboxWithTitle:@"开启单聊图灵回复" target:self action:@selector(clickEnableSingleTulingBtn:)];
+        btn.frame = NSMakeRect(20, 420, 200, 20);
+        
+        btn;
+    });
+    
+    self.enableTulingBotGroup = ({
+        NSButton *btn = [NSButton tk_checkboxWithTitle:@"开启群聊图灵回复" target:self action:@selector(clickEnableGroupTulingBtn:)];
+        btn.frame = NSMakeRect(200, 420, 400, 20);
+        
+        btn;
+    });
+    
+    NSText *tip = ({
+        NSText *text = [[NSText alloc] initWithFrame:NSMakeRect(350, 420, 280, 20)];
+        text.string = @"⚠️开启图灵回复之后，条件回复将失效！！！";
+        text.backgroundColor = [NSColor clearColor];
+        text.textColor = [NSColor systemYellowColor];
+        text;
+    });
+    
+    [self.window.contentView addSubviews:@[self.enableTulingBotSingle, self.enableTulingBotGroup, tip]];
+    
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
-        scrollView.frame = NSMakeRect(30, 50, 200, 375);
+        scrollView.frame = NSMakeRect(30, 10, 200, 375);
         scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
         scrollView;
@@ -105,7 +133,8 @@
     
     scrollView.contentView.documentView = self.tableView;
     
-    [self.window.contentView addSubviews:@[scrollView,
+    [self.window.contentView addSubviews:@[
+                                           scrollView,
                                            self.contentView,
                                            self.addButton,
                                            self.reduceButton]];
@@ -136,6 +165,14 @@
 - (BOOL)windowShouldClose:(id)sender {
     [[TKWeChatPluginConfig sharedConfig] saveAutoReplyModels];
     return YES;
+}
+
+- (void)clickEnableSingleTulingBtn:(NSButton *)btn {
+    [TKWeChatPluginConfig sharedConfig].enableTulingSingle = btn.state;
+}
+
+- (void)clickEnableGroupTulingBtn:(NSButton *)btn {
+    [TKWeChatPluginConfig sharedConfig].enabelTulingGroup = btn.state;
 }
 
 #pragma mark - addButton & reduceButton ClickAction

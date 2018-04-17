@@ -264,7 +264,7 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
             if (![addMsg.fromUserName.string containsString:@"@chatroom"]) {
                 if ([addMsg.content.string isEqualToString:@"体验"]) {
                     
-                    NSString *allowGroupID = [[NSUserDefaults standardUserDefaults] stringForKey:kAllowTulingReplayGroupIDKey];
+                    NSString *allowGroupID = @"";
                     
                     if (allowGroupID.length > 0) {
                         GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
@@ -380,8 +380,7 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
         return;
     }
     
-    NSString *allowGroupID = [[NSUserDefaults standardUserDefaults] stringForKey:kAllowTulingReplayGroupIDKey];
-    if ([addMsg.fromUserName.string isEqualToString:allowGroupID]) {
+    if (([TKWeChatPluginConfig sharedConfig].enabelTulingGroup && [addMsg.fromUserName.string containsString:@"chatroom"]) || ([TKWeChatPluginConfig sharedConfig].enableTulingSingle && ![addMsg.fromUserName.string containsString:@"chatroom"])) {
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.tuling123.com/openapi/api?key=f46e9f8a24da4398b6522e8d47b08983&info=%@", [addMsg.content.string urlEncode]]]];
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             

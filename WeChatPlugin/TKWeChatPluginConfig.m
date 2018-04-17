@@ -14,6 +14,10 @@
 static NSString * const kTKPreventRevokeEnableKey = @"kTKPreventRevokeEnableKey";
 static NSString * const kTKAutoAuthEnableKey = @"kTKAutoAuthEnableKey";
 static NSString * const kTKOnTopKey = @"kTKOnTopKey";
+
+static NSString * const kTulingSingle = @"kTulingSingleAutoreply";
+static NSString * const kTulingGroup = @"kTulingGroupAutoreply";
+
 static NSString * const kTKAutoReplyModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKAutoReplyModels.plist";
 static NSString * const kTKRemoteControlModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKRemoteControlCommands.plist";
 static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKIgnoreSessons.plist";
@@ -35,6 +39,8 @@ static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.
         _preventRevokeEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventRevokeEnableKey];
         _autoAuthEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAutoAuthEnableKey];
         _onTop = [[NSUserDefaults standardUserDefaults] boolForKey:kTKOnTopKey];
+        _enableTulingSingle = [[NSUserDefaults standardUserDefaults] boolForKey:kTulingSingle];
+        _enabelTulingGroup = [[NSUserDefaults standardUserDefaults] boolForKey:kTulingGroup];
     }
     return self;
 }
@@ -54,6 +60,20 @@ static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.
 - (void)setOnTop:(BOOL)onTop {
     _onTop = onTop;
     [[NSUserDefaults standardUserDefaults] setBool:_onTop forKey:kTKOnTopKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setEnableTulingSingle:(BOOL)enableTulingSingle {
+    _enableTulingSingle = enableTulingSingle;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_enableTulingSingle forKey:kTulingSingle];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setEnabelTulingGroup:(BOOL)enabelTulingGroup {
+    _enabelTulingGroup = enabelTulingGroup;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_enabelTulingGroup forKey:kTulingGroup];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

@@ -17,8 +17,6 @@
 
 #pragma mark - Plugin
 
-NSString * const kAllowTulingReplayGroupIDKey = @"kAllowTulingReplayGroupIDKey";
-
 @implementation NSBundle (WeChatPlugin)
 
 + (instancetype)pluginBundle {

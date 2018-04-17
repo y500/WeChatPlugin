@@ -165,7 +165,7 @@
             chatRoomID = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"room"];
         }
         if (chatRoomID.length > 0) {
-            [[NSUserDefaults standardUserDefaults] setObject:chatRoomID forKey:kAllowTulingReplayGroupIDKey];
+//            [[NSUserDefaults standardUserDefaults] setObject:chatRoomID forKey:kAllowTulingReplayGroupIDKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
@@ -175,7 +175,7 @@
         
     }
     else if ([request.path isEqualToString:@"/disableMagicGroup"]) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAllowTulingReplayGroupIDKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAllowTulingReplayGroupIDKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
     }
