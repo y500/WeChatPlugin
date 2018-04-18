@@ -165,8 +165,8 @@
             chatRoomID = [[(GCDWebServerURLEncodedFormRequest*)request arguments] objectForKey:@"room"];
         }
         if (chatRoomID.length > 0) {
-//            [[NSUserDefaults standardUserDefaults] setObject:chatRoomID forKey:kAllowTulingReplayGroupIDKey];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            [TKWeChatPluginConfig sharedConfig].enabelInviteToGroup = YES;
+            [TKWeChatPluginConfig sharedConfig].inviteGroupID = chatRoomID;
             
             return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
         }else {
@@ -175,8 +175,7 @@
         
     }
     else if ([request.path isEqualToString:@"/disableMagicGroup"]) {
-//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAllowTulingReplayGroupIDKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [TKWeChatPluginConfig sharedConfig].enabelInviteToGroup = NO;
         return [GCDWebServerDataResponse responseWithJSONObject:@{@"code":@200, @"info":@"success"}];
     }
     else {

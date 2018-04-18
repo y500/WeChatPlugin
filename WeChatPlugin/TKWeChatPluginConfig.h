@@ -23,6 +23,9 @@
 @property (nonatomic, assign) BOOL enableTulingSingle;
 @property (nonatomic, assign) BOOL enabelTulingGroup;
 
+@property (nonatomic, assign) BOOL enabelInviteToGroup;
+@property (nonatomic, copy) NSString *inviteGroupID;
+
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

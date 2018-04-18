@@ -18,6 +18,9 @@ static NSString * const kTKOnTopKey = @"kTKOnTopKey";
 static NSString * const kTulingSingle = @"kTulingSingleAutoreply";
 static NSString * const kTulingGroup = @"kTulingGroupAutoreply";
 
+static NSString * const kInviteGroup = @"kInviteGroup";
+static NSString * const kInviteGroupID = @"kInviteGroupID";
+
 static NSString * const kTKAutoReplyModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKAutoReplyModels.plist";
 static NSString * const kTKRemoteControlModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKRemoteControlCommands.plist";
 static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKIgnoreSessons.plist";
@@ -41,6 +44,8 @@ static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.
         _onTop = [[NSUserDefaults standardUserDefaults] boolForKey:kTKOnTopKey];
         _enableTulingSingle = [[NSUserDefaults standardUserDefaults] boolForKey:kTulingSingle];
         _enabelTulingGroup = [[NSUserDefaults standardUserDefaults] boolForKey:kTulingGroup];
+        _enabelInviteToGroup = [[NSUserDefaults standardUserDefaults] boolForKey:kInviteGroup];
+        _inviteGroupID = [[NSUserDefaults standardUserDefaults] stringForKey:kInviteGroupID];
     }
     return self;
 }
@@ -74,6 +79,20 @@ static NSString * const kTKIgnoreSessionModelsFilePath = @"/Applications/WeChat.
     _enabelTulingGroup = enabelTulingGroup;
     
     [[NSUserDefaults standardUserDefaults] setBool:_enabelTulingGroup forKey:kTulingGroup];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setEnabelInviteToGroup:(BOOL)enabelInviteToGroup {
+    _enabelInviteToGroup = enabelInviteToGroup;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_enabelInviteToGroup forKey:kInviteGroup];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setInviteGroupID:(NSString *)inviteGroupID {
+    _inviteGroupID = inviteGroupID;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_inviteGroupID forKey:kInviteGroupID];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

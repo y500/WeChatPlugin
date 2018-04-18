@@ -14,9 +14,11 @@
 #import "TKRemoteControlWindowController.h"
 #import "TKIgnoreSessonModel.h"
 #import "ToolKit.h"
+#import "InviteToGroupController.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
+static char inviteToGroupWindowControllerKey;       // 自动拉群窗口的关联 key
 
 @implementation NSObject (WeChatHook)
 
@@ -67,6 +69,10 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     NSMenuItem *autoAuthItem = [[NSMenuItem alloc] initWithTitle:@"免认证登录" action:@selector(onAutoAuthControl:) keyEquivalent:@"M"];
     autoAuthItem.state = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
     
+    //自动邀请进群
+    NSMenuItem *inviteGroupItem = [[NSMenuItem alloc] initWithTitle:@"自动邀请进群" action:@selector(onInviteToGroup:) keyEquivalent:@"I"];
+    inviteGroupItem.state = [[TKWeChatPluginConfig sharedConfig] enabelInviteToGroup];
+    
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:@"微信小助手"];
     [subMenu addItem:preventRevokeItem];
     [subMenu addItem:autoReplyItem];
@@ -74,6 +80,7 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     [subMenu addItem:newWeChatItem];
     [subMenu addItem:onTopItem];
     [subMenu addItem:autoAuthItem];
+    [subMenu addItem:inviteGroupItem];
     
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
     [menuItem setTitle:@"微信小助手"];
@@ -160,6 +167,20 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     [[TKWeChatPluginConfig sharedConfig] setOnTop:item.state];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     wechat.mainWindowController.window.level = item.state == NSControlStateValueOn ? NSStatusWindowLevel : NSNormalWindowLevel;
+}
+
+- (void)onInviteToGroup:(NSMenuItem*)item {
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+    InviteToGroupController *inviteControlWC = objc_getAssociatedObject(wechat, &inviteToGroupWindowControllerKey);
+    
+    if (!inviteControlWC) {
+        inviteControlWC = [[InviteToGroupController alloc] initWithWindowNibName:@"InviteToGroupController"];
+        objc_setAssociatedObject(wechat, &inviteToGroupWindowControllerKey, inviteControlWC, OBJC_ASSOCIATION_RETAIN);
+    }
+    
+    [inviteControlWC showWindow:inviteControlWC];
+    [inviteControlWC.window center];
+    [inviteControlWC.window makeKeyWindow];
 }
 
 #pragma mark - hook 微信方法
@@ -264,14 +285,12 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
             if (![addMsg.fromUserName.string containsString:@"@chatroom"]) {
                 if ([addMsg.content.string isEqualToString:@"体验"]) {
                     
-                    NSString *allowGroupID = @"";
-                    
-                    if (allowGroupID.length > 0) {
+                    if ([TKWeChatPluginConfig sharedConfig].enabelInviteToGroup && [TKWeChatPluginConfig sharedConfig].inviteGroupID.length > 0) {
                         GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
                         [member setM_nsMemberName:addMsg.fromUserName.string];
                         
                         GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-                        [groupStorage AddGroupMembers:@[member] withGroupUserName:allowGroupID completion:nil];
+                        [groupStorage AddGroupMembers:@[member] withGroupUserName:[TKWeChatPluginConfig sharedConfig].inviteGroupID completion:nil];
                     }else {
                         [self sendTextMessageToUsrName:addMsg.fromUserName.string msgText:@"没有开启MagicRoom"];
                     }

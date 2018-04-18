@@ -55,6 +55,11 @@
 		80E5520E1E860B9600EB428F /* time_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E552041E860B9600EB428F /* time_icon@2x.png */; };
 		80E552101E860BDC00EB428F /* MMTimeLineMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */; };
 		80E552121E860BDC00EB428F /* MMStatusCellDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */; };
+		E827FDDC2086299B00746BED /* InviteToGroupController.h in Headers */ = {isa = PBXBuildFile; fileRef = E827FDD92086299B00746BED /* InviteToGroupController.h */; };
+		E827FDDD2086299B00746BED /* InviteToGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = E827FDDA2086299B00746BED /* InviteToGroupController.m */; };
+		E827FDDE2086299B00746BED /* InviteToGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E827FDDB2086299B00746BED /* InviteToGroupController.xib */; };
+		E827FDE320862B3A00746BED /* InviteGroupCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = E827FDE120862B3A00746BED /* InviteGroupCellView.h */; };
+		E827FDE420862B3A00746BED /* InviteGroupCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E827FDE220862B3A00746BED /* InviteGroupCellView.m */; };
 		E86D5363206E65BA00AD847C /* WeChatHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E86D5361206E65BA00AD847C /* WeChatHelper.h */; };
 		E86D5364206E65BA00AD847C /* WeChatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E86D5362206E65BA00AD847C /* WeChatHelper.m */; };
 		E86D5368206E6A2C00AD847C /* MMWebServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E86D5366206E6A2C00AD847C /* MMWebServer.h */; };
@@ -171,6 +176,11 @@
 		80E552041E860B9600EB428F /* time_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_icon@2x.png"; sourceTree = "<group>"; };
 		80E5520F1E860BDC00EB428F /* MMTimeLineMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTimeLineMainViewController.h; sourceTree = "<group>"; };
 		80E552111E860BDC00EB428F /* MMStatusCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusCellDelegate.h; sourceTree = "<group>"; };
+		E827FDD92086299B00746BED /* InviteToGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteToGroupController.h; sourceTree = "<group>"; };
+		E827FDDA2086299B00746BED /* InviteToGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteToGroupController.m; sourceTree = "<group>"; };
+		E827FDDB2086299B00746BED /* InviteToGroupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteToGroupController.xib; sourceTree = "<group>"; };
+		E827FDE120862B3A00746BED /* InviteGroupCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteGroupCellView.h; sourceTree = "<group>"; };
+		E827FDE220862B3A00746BED /* InviteGroupCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteGroupCellView.m; sourceTree = "<group>"; };
 		E86D5361206E65BA00AD847C /* WeChatHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatHelper.h; sourceTree = "<group>"; };
 		E86D5362206E65BA00AD847C /* WeChatHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatHelper.m; sourceTree = "<group>"; };
 		E86D5366206E6A2C00AD847C /* MMWebServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebServer.h; sourceTree = "<group>"; };
@@ -289,6 +299,7 @@
 				E86D5350206D145100AD847C /* AutoReply */,
 				E86D534D206D12D700AD847C /* RemoteControl */,
 				80E551DC1E8559B400EB428F /* TimeLine */,
+				E827FDCD2086287F00746BED /* AutoInviteToGroup */,
 				803DAFC61E853D3F00ADCC86 /* Supporting Files */,
 			);
 			path = WeChatPlugin;
@@ -428,6 +439,42 @@
 				48F13D0591BA620DD6C698A1 /* libPods-WeChatPlugin.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E827FDCD2086287F00746BED /* AutoInviteToGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E827FDE020862AF300746BED /* view */,
+				E827FDDF20862AED00746BED /* model */,
+				E827FDCE208628B500746BED /* controller */,
+			);
+			name = AutoInviteToGroup;
+			sourceTree = "<group>";
+		};
+		E827FDCE208628B500746BED /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				E827FDD92086299B00746BED /* InviteToGroupController.h */,
+				E827FDDA2086299B00746BED /* InviteToGroupController.m */,
+				E827FDDB2086299B00746BED /* InviteToGroupController.xib */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		E827FDDF20862AED00746BED /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		E827FDE020862AF300746BED /* view */ = {
+			isa = PBXGroup;
+			children = (
+				E827FDE120862B3A00746BED /* InviteGroupCellView.h */,
+				E827FDE220862B3A00746BED /* InviteGroupCellView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		E86D534D206D12D700AD847C /* RemoteControl */ = {
@@ -570,6 +617,7 @@
 			files = (
 				E86D5368206E6A2C00AD847C /* MMWebServer.h in Headers */,
 				80E551F81E85621400EB428F /* XMLReader.h in Headers */,
+				E827FDE320862B3A00746BED /* InviteGroupCellView.h in Headers */,
 				80E551E01E8559E700EB428F /* MMTimeLineViewController.h in Headers */,
 				F8348B691FBEB9F1006A4FA3 /* TKIgnoreSessonModel.h in Headers */,
 				F8348B701FBEB9F1006A4FA3 /* TKBaseModel.h in Headers */,
@@ -589,6 +637,7 @@
 				E86D5363206E65BA00AD847C /* WeChatHelper.h in Headers */,
 				803DAFCA1E853D3F00ADCC86 /* WeChatPlugin.h in Headers */,
 				80E551B11E853FA100EB428F /* MMStatusLinkMediaObject.h in Headers */,
+				E827FDDC2086299B00746BED /* InviteToGroupController.h in Headers */,
 				80E551A91E853FA100EB428F /* MMStatusCell.h in Headers */,
 				80E551AE1E853FA100EB428F /* MMStatusImageMediaView.h in Headers */,
 				F8348B6A1FBEB9F1006A4FA3 /* TKRemoteControlModel.h in Headers */,
@@ -706,6 +755,7 @@
 				80E551AB1E853FA100EB428F /* MMStatusCell.xib in Resources */,
 				80E551E21E8559E700EB428F /* MMTimeLineViewController.xib in Resources */,
 				80E551B01E853FA100EB428F /* MMStatusImageMediaView.xib in Resources */,
+				E827FDDE2086299B00746BED /* InviteToGroupController.xib in Resources */,
 				80E5520C1E860B9600EB428F /* Tabbar-TimeLine-Selected@2x.png in Resources */,
 				80E552091E860B9600EB428F /* link_icon@2x.png in Resources */,
 				F8348B811FBEB9F1006A4FA3 /* TKRemoteControlCommands.plist in Resources */,
@@ -803,7 +853,9 @@
 				F8348B621FBEB9F1006A4FA3 /* MMChatsTableCellView+hook.m in Sources */,
 				80E551B91E853FA100EB428F /* MMStatusMediaView.m in Sources */,
 				80E551B71E853FA100EB428F /* MMStatusMediaObject.m in Sources */,
+				E827FDDD2086299B00746BED /* InviteToGroupController.m in Sources */,
 				F8348B611FBEB9F1006A4FA3 /* WeChat+hook.m in Sources */,
+				E827FDE420862B3A00746BED /* InviteGroupCellView.m in Sources */,
 				80E551AF1E853FA100EB428F /* MMStatusImageMediaView.m in Sources */,
 				F8348B6E1FBEB9F1006A4FA3 /* TKRemoteControlModel.m in Sources */,
 				F8348B711FBEB9F1006A4FA3 /* NSButton+Action.m in Sources */,
